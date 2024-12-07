@@ -1,0 +1,2319 @@
+<!doctype html>
+<html
+  lang="zh-cn"
+  
+>
+  <head>
+    <meta charset="utf-8" />
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1, shrink-to-fit=no"
+/>
+
+
+
+
+
+
+
+  
+
+<title>
+  PHP基础笔记 | Iota
+</title>
+<meta
+  name="description"
+  content="就当无事发生..."
+/>
+
+
+
+
+
+
+
+
+
+<script>
+  window.siteConfig = JSON.parse("{\"anchor_icon\":null,\"clipboard\":{\"copyright\":{\"content\":\"本文版权：本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！\",\"count\":50,\"enable\":true},\"fail\":\"复制失败 (ﾟ⊿ﾟ)ﾂ\",\"success\":\"复制成功(*^▽^*)\"},\"icon_font\":\"4552607_tq6stt6tcg\",\"outdate\":{\"daysago\":180,\"enable\":false,\"message\":\"本文最后更新于 {time}，请注意文中内容可能已经发生变化。\"}}");
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+    
+  
+
+  
+  
+  
+    
+  
+
+  
+    
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  rel="preload"
+  as="style"
+  href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7cNoto%20Serif%20SC:400,400italic,700,700italic%7c&amp;display=swap"
+/>
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7cNoto%20Serif%20SC:400,400italic,700,700italic%7c&amp;display=swap"
+  media="print"
+  onload="this.media='all'"
+/>
+
+
+
+
+
+
+  <link
+    rel="preload"
+    href="//at.alicdn.com/t/c/font_4552607_tq6stt6tcg.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin="anonymous"
+  />
+
+
+
+  
+
+
+
+
+
+
+
+  
+ <link rel="stylesheet" href="/css/loader.min.2ad0e9bbffb534e893c0ecefc44787a277cf851387e8ad9dccfbc3a5f0886dbe.css" />
+
+
+
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="PHP基础笔记 | Iota" />
+  <meta
+    property="og:description"
+    content="就当无事发生..."
+  />
+  <meta property="og:url" content="https://fourwt.github.io/post/txt/php%E6%9D%82%E7%AC%94/" />
+  <meta
+    property="og:site_name"
+    content="Iotaの小屋"
+  />
+  <meta
+    property="og:image"
+    content="https://img.paulzzh.com/touhou/random?7"
+  />
+  <meta property="article:author" content="Iota" />
+  <meta property="article:published_time" content="2023-03-15T11:00:00-07:00" />
+  <meta property="article:modified_time" content="2023-03-15T11:00:00-07:00" />
+  
+    <meta property="article:tag" content="笔记" />
+  
+  
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:image" content="https://img.paulzzh.com/touhou/random?7" />
+  
+  
+  
+  
+  
+
+
+
+
+<link rel="shortcut icon" href="/favicon.ico">
+
+
+
+
+
+
+
+
+  
+ <link rel="stylesheet" href="/css/main.min.306f6f41f8bb1e650bf1560e27784a4caa821359cd8332833f8d56821772b93b.css" />
+
+
+
+
+
+  <link
+    rel="preload"
+    as="style"
+    href="https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.css"
+    onload="this.onload=null;this.rel='stylesheet'"
+  />
+
+
+
+
+
+
+  <link
+    rel="preload"
+    as="style"
+    href="https://npm.webcache.cn/katex@0.16.9/dist/katex.min.css"
+    onload="this.onload=null;this.rel='stylesheet'"
+  />
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+  
+  
+  
+  <script
+    src="https://npm.webcache.cn/pace-js@1.2.4/pace.min.js"
+    
+    
+    
+    
+    integrity="sha384-k6YtvFUEIuEFBdrLKJ3YAUbBki333tj1CSUisai5Cswsg9wcLNaPzsTHDswp4Az8" crossorigin="anonymous"
+  ></script>
+
+
+
+
+
+  
+
+
+  <link rel="stylesheet" href="https://npm.webcache.cn/@reimujs/aos@0.1.0/dist/aos.css" />
+
+
+
+
+  </head>
+  <body>
+    
+  <div id='loader'>
+    <div class="loading-left-bg loading-bg"></div>
+    <div class="loading-right-bg loading-bg"></div>
+    <div class="spinner-box">
+      <div class="loading-taichi">
+        
+          <svg width="150" height="150" viewBox="0 0 1024 1024" class="icon" version="1.1" xmlns="https://www.w3.org/2000/svg" shape-rendering="geometricPrecision">
+            <path d="M303.5 432A80 80 0 0 1 291.5 592A80 80 0 0 1 303.5 432z" fill="#ff5252" />
+            <path d="M512 65A447 447 0 0 1 512 959L512 929A417 417 0 0 0 512 95A417 417 0 0 0 512 929L512 959A447 447 0 0 1 512 65z 
+          M512 95A417 417 0 0 1 929 512A208.5 208.5 0 0 1 720.5 720.5L720.5 592A80 80 0 0 0 720.5 432A80 80 0 0 0 720.5 592L720.5 720.5A208.5 208.5 0 0 1 512 512A208.5 208.5 0 0 0 303.5 303.5A208.5 208.5 0 0 0 95 512A417 417 0 0 1 512 95z" fill="#ff5252" />
+          </svg>
+        
+      </div>
+      <div class="loading-word">少女祈祷中...</div>
+    </div>
+  </div>
+  </div>
+  <script>
+    var time = null;
+    var startLoading = () => {
+      time = Date.now();
+      document.getElementById('loader').classList.remove("loading");
+    }
+    var endLoading = () => {
+      if (!time) {
+        document.body.style.overflow = 'auto';
+        document.getElementById('loader').classList.add("loading");
+      } else {
+        if (Date.now() - time > 500) {
+          time = null;
+          document.body.style.overflow = 'auto';
+          document.getElementById('loader').classList.add("loading");
+        } else {
+          setTimeout(endLoading, 500 - (Date.now() - time));
+          time = null;
+        }
+      }
+    }
+    window.addEventListener('DOMContentLoaded', endLoading);
+    document.getElementById('loader').addEventListener('click', endLoading);
+  </script>
+
+
+<div id="copy-tooltip" style="pointer-events: none; opacity: 0; transition: all 0.2s ease; position: fixed;top: 50%;left: 50%;z-index: 999;transform: translate(-50%, -50%);color: white;background: rgba(0, 0, 0, 0.5);padding: 10px 15px;border-radius: 10px;">
+</div>
+
+
+    <div id="container">
+      <div id="wrap">
+        
+<div id="header-nav">
+  <nav id="main-nav">
+    
+      <span class="main-nav-link-wrap">
+        <div class='main-nav-icon icon rotate'>
+          
+            
+              &#xe62b;
+            
+          
+        </div>
+        <a class="main-nav-link" href="/">首页</a>
+      </span>
+    
+      <span class="main-nav-link-wrap">
+        <div class='main-nav-icon icon rotate'>
+          
+            
+              &#xe62b;
+            
+          
+        </div>
+        <a class="main-nav-link" href="/categories">分类</a>
+      </span>
+    
+      <span class="main-nav-link-wrap">
+        <div class='main-nav-icon icon rotate'>
+          
+            
+              &#xe62b;
+            
+          
+        </div>
+        <a class="main-nav-link" href="/archives">归档</a>
+      </span>
+    
+      <span class="main-nav-link-wrap">
+        <div class='main-nav-icon icon rotate'>
+          
+            
+              &#xe62b;
+            
+          
+        </div>
+        <a class="main-nav-link" href="/about">关于</a>
+      </span>
+    
+      <span class="main-nav-link-wrap">
+        <div class='main-nav-icon icon rotate'>
+          
+            
+              &#xe62b;
+            
+          
+        </div>
+        <a class="main-nav-link" href="/friend">友链</a>
+      </span>
+    
+    <a id="main-nav-toggle" class="nav-icon"></a>
+  </nav>
+  <nav id="sub-nav">
+    
+    
+  </nav>
+</div>
+<header id="header">
+  
+    
+      <img fetchpriority="high" src="https://img.paulzzh.com/touhou/random?7" alt="PHP基础笔记">
+    
+  
+
+  <div id="header-outer">
+    <div id="header-title">
+      
+        
+        
+          
+        
+  
+        
+          <a href="/" id="logo">
+            <h1 data-aos="slide-up">PHP基础笔记</h1>
+          </a>
+        
+      
+  
+      
+        
+        
+        <h2 id="subtitle-wrap" data-aos="slide-down">
+          
+        </h2>
+      
+    </div>
+  </div>
+</header>
+        <main id="content">
+          
+          <section id="main">
+  <article
+  class="h-entry article"
+  itemprop="blogPost"
+  itemscope
+  itemtype="https://schema.org/BlogPosting"
+>
+  <div
+    class="article-inner"
+    data-aos="fade-up"
+  >
+    <div class="article-meta">
+      <div class="article-date">
+  <a
+    href="https://fourwt.github.io/post/txt/php%E6%9D%82%E7%AC%94/"
+    class="article-date-link"
+    data-aos="zoom-in"
+  >
+    <time datetime="2023-03-15 11:00:00 -0700 -0700" itemprop="datePublished"
+      >2023-03-15</time
+    >
+    <time style="display: none;" id="post-update-time"
+      >2023-03-15</time
+    >
+  </a>
+</div>
+
+      <div class="article-category">
+  
+    <a
+      class="article-category-link"
+      href="/categories/php"
+      data-aos="zoom-in"
+      >PHP</a
+    >
+  
+</div>
+
+    </div>
+    <div class="hr-line"></div>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+      
+        <h1 id="php">
+<a class="header-anchor" href="#php"></a>
+PHP
+</h1><h2 id="简介">
+<a class="header-anchor" href="#%e7%ae%80%e4%bb%8b"></a>
+简介
+</h2><p>PHP是一种服务器端的HTML脚本/解释语言，快速书写动态网页</p>
+<h2 id="静态网页和动态网页">
+<a class="header-anchor" href="#%e9%9d%99%e6%80%81%e7%bd%91%e9%a1%b5%e5%92%8c%e5%8a%a8%e6%80%81%e7%bd%91%e9%a1%b5"></a>
+静态网页和动态网页
+</h2><p>不解释</p>
+<h2 id="web访问流程">
+<a class="header-anchor" href="#web%e8%ae%bf%e9%97%ae%e6%b5%81%e7%a8%8b"></a>
+web访问流程
+</h2><p>web网页发起》dns解析域名》服务器电脑》服务器软件</p>
+<h2 id="php基本语法">
+<a class="header-anchor" href="#php%e5%9f%ba%e6%9c%ac%e8%af%ad%e6%b3%95"></a>
+PHP基本语法
+</h2><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">meta</span> <span style="color:#a6e22e">charset</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;UTF-8&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;!</span><span style="color:#a6e22e">DOCTYPE</span> <span style="color:#a6e22e">html</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">html</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">body</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">h1</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">Hello</span> <span style="color:#a6e22e">world</span><span style="color:#f92672">&lt;/</span><span style="color:#a6e22e">h1</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#34;I see you&#34;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">?&gt;</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">    &lt;/body&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">&lt;/html&gt;
+</span></span></span></code></pre></div><blockquote>
+<p>PHP可以运行css，html，js语句，但是html，css，js文件里不能包含PHP语句</p>
+</blockquote>
+<h3 id="输出方法echo-print">
+<a class="header-anchor" href="#%e8%be%93%e5%87%ba%e6%96%b9%e6%b3%95echo-print"></a>
+输出方法:echo print
+</h3><p><strong>不同点:</strong></p>
+<p>echo:输出多个字符串</p>
+<p>print:输出一个字符串,并且返回1</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#34;I see you&#34;</span>;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">print</span> <span style="color:#e6db74">&#34;I watting you&#34;</span>,<span style="color:#e6db74">&#34;hhh&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">?&gt;</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">#以上内容会报错
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">&lt;?php
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">    echo &#34;I see you&#34;;
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">    echo print &#34;I watting you&#34;;
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">?&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">#会返回1
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">&lt;?php
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">    $a = print &#34;I see you&#34;;
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">    echo $a
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">?&gt;
+</span></span></span></code></pre></div><h3 id="注释">
+<a class="header-anchor" href="#%e6%b3%a8%e9%87%8a"></a>
+注释
+</h3><p>不多解释</p>
+<p>多行注释</p>
+<p>/*</p>
+<p>*/</p>
+<h3 id="变量">
+<a class="header-anchor" href="#%e5%8f%98%e9%87%8f"></a>
+变量
+</h3><p>变量命名不多解释,对大小写敏感,必须以字母或下划线开头</p>
+<p>推荐三种命名法:下划线,大驼峰,小驼峰</p>
+<p>不用告诉php数据类型,会自动转换</p>
+<h3 id="命令行">
+<a class="header-anchor" href="#%e5%91%bd%e4%bb%a4%e8%a1%8c"></a>
+命令行
+</h3><p>可以像python一样在命令提示符里运行</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-PHP" data-lang="PHP"><span style="display:flex;"><span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
+</span></span><span style="display:flex;"><span>    $input <span style="color:#f92672">=</span> <span style="color:#a6e22e">readline</span>(<span style="color:#e6db74">&#34;请输入：&#34;</span>);
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#34;你输入的是：&#34;</span><span style="color:#f92672">.</span>$input;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">?&gt;</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">____________________________________________________________________________________________________________
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">&lt;?php
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">    $a = readline(&#34;请输入：&#34;);
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">    $b = readline(&#34;请再输入：&#34;);
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">	echo &#34;你输入的是：&#34; .($a + $b)
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">?&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">#别问为什么中文不显示全面
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">&lt;?php
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">    echo &#34;请输入内容：&#34;;
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">    $input = fgets(STDIN);
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">	echo &#34;输入的内容是:&#34;.$input;
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">?&gt;
+</span></span></span></code></pre></div><h3 id="数据类型">
+<a class="header-anchor" href="#%e6%95%b0%e6%8d%ae%e7%b1%bb%e5%9e%8b"></a>
+数据类型
+</h3><p>字符串，整数，浮点，布尔，数组，对象，资源类型，NULL</p>
+<p>用var_dump()会返回数据类型和值，一般用于开发调试</p>
+<blockquote>
+<p>echo gettype();只返回数据类型</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
+</span></span><span style="display:flex;"><span>    $a <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;I see you&#34;</span> ;
+</span></span><span style="display:flex;"><span>    $b <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;I watting you&#34;</span> ;
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">var_dump</span>($a,$b) ;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#34;a的值是</span><span style="color:#e6db74">$a</span><span style="color:#e6db74">&#34;</span> ;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#34;&lt;br&gt;&#34;</span> ;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;b的值是$b&#39;</span> ;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#34;&lt;hr&gt;&#34;</span> ;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">echo</span> <span style="color:#a6e22e">gettype</span>($a)
+</span></span><span style="display:flex;"><span><span style="color:#75715e">?&gt;</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span></code></pre></div><h3 id="整数">
+<a class="header-anchor" href="#%e6%95%b4%e6%95%b0"></a>
+整数
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span> 
+</span></span><span style="display:flex;"><span>    $A <span style="color:#f92672">=</span> <span style="color:#ae81ff">0721</span> ;
+</span></span><span style="display:flex;"><span>    $B <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">0721</span> ;
+</span></span><span style="display:flex;"><span>    $C <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x900</span> ;
+</span></span><span style="display:flex;"><span>    $D <span style="color:#f92672">=</span> <span style="color:#ae81ff">0173</span> ;
+</span></span><span style="display:flex;"><span>    $E <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#a6e22e">b1100</span> ;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">echo</span> <span style="color:#a6e22e">var_dump</span>($A) ;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">echo</span> <span style="color:#a6e22e">var_dump</span>($B) ;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">echo</span> <span style="color:#a6e22e">var_dump</span>($C) ;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">echo</span> <span style="color:#a6e22e">var_dump</span>($D) ;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">echo</span> <span style="color:#a6e22e">var_dump</span>($E) ;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">?&gt;</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span></code></pre></div><h3 id="浮点数">
+<a class="header-anchor" href="#%e6%b5%ae%e7%82%b9%e6%95%b0"></a>
+浮点数
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
+</span></span><span style="display:flex;"><span>        $A <span style="color:#f92672">=</span> <span style="color:#ae81ff">3.14</span> ;
+</span></span><span style="display:flex;"><span>    $B <span style="color:#f92672">=</span> <span style="color:#ae81ff">3.14e5</span> ;
+</span></span><span style="display:flex;"><span>    $C <span style="color:#f92672">=</span> <span style="color:#ae81ff">8E-5</span> ;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">echo</span> <span style="color:#a6e22e">var_dump</span>($A) ;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">echo</span> <span style="color:#a6e22e">var_dump</span>($B) ;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">echo</span> <span style="color:#a6e22e">var_dump</span>($C) ;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">?&gt;</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span></code></pre></div><h3 id="布尔型">
+<a class="header-anchor" href="#%e5%b8%83%e5%b0%94%e5%9e%8b"></a>
+布尔型
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
+</span></span><span style="display:flex;"><span>    $a <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span> ;
+</span></span><span style="display:flex;"><span>    $b <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span> ;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">?&gt;</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span></code></pre></div><h3 id="数组">
+<a class="header-anchor" href="#%e6%95%b0%e7%bb%84"></a>
+数组
+</h3><p>分为一维数组和多维数组,在变量中存储多个值</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
+</span></span><span style="display:flex;"><span>    $a <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;a&#34;</span>,<span style="color:#e6db74">&#34;b&#34;</span>,<span style="color:#e6db74">&#34;c&#34;</span>] ;
+</span></span><span style="display:flex;"><span>	$c <span style="color:#f92672">=</span> <span style="color:#66d9ef">array</span>(<span style="color:#e6db74">&#34;a&#34;</span>,<span style="color:#e6db74">&#34;b&#34;</span>,<span style="color:#e6db74">&#34;c&#34;</span>) ;
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">var_dump</span>($a,$c)
+</span></span><span style="display:flex;"><span><span style="color:#75715e">?&gt;</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span></code></pre></div><h3 id="对象">
+<a class="header-anchor" href="#%e5%af%b9%e8%b1%a1"></a>
+对象
+</h3><p>需要封装和类知识</p>
+<blockquote>
+<p>print(&quot;<pre>&quot;) ; 格式化输出</p>
+</blockquote>
+<h3 id="null">
+<a class="header-anchor" href="#null"></a>
+NULL
+</h3><p>表示变量无值，可设置变量为NULL来清空变量数据</p>
+<h3 id="resource-资源类型">
+<a class="header-anchor" href="#resource-%e8%b5%84%e6%ba%90%e7%b1%bb%e5%9e%8b"></a>
+resource 资源类型
+</h3><p>略</p>
+<h2 id="html快速回顾">
+<a class="header-anchor" href="#html%e5%bf%ab%e9%80%9f%e5%9b%9e%e9%a1%be"></a>
+HTML快速回顾
+</h2><ul>
+<li>在VSCode里安装Live server插件</li>
+</ul>
+<h3 id="注释-1">
+<a class="header-anchor" href="#%e6%b3%a8%e9%87%8a-1"></a>
+注释
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span><span style="color:#75715e">&lt;!--注释内容--&gt;</span>
+</span></span></code></pre></div><h3 id="标签语法">
+<a class="header-anchor" href="#%e6%a0%87%e7%ad%be%e8%af%ad%e6%b3%95"></a>
+标签语法
+</h3><p>成对标签：<h1></h1></p>
+<p>自闭合标签：<input><br></p>
+<h4 id="块级元素">
+<a class="header-anchor" href="#%e5%9d%97%e7%ba%a7%e5%85%83%e7%b4%a0"></a>
+块级元素
+</h4><h5 id="h标签">
+<a class="header-anchor" href="#h%e6%a0%87%e7%ad%be"></a>
+h标签
+</h5><p>h1-h6</p>
+<h5 id="p标签">
+<a class="header-anchor" href="#p%e6%a0%87%e7%ad%be"></a>
+p标签
+</h5><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">p</span>&gt;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">p</span>&gt;
+</span></span></code></pre></div><h5 id="div标签">
+<a class="header-anchor" href="#div%e6%a0%87%e7%ad%be"></a>
+div标签
+</h5><h4 id="行级元素">
+<a class="header-anchor" href="#%e8%a1%8c%e7%ba%a7%e5%85%83%e7%b4%a0"></a>
+行级元素
+</h4><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">span</span>&gt;&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">a</span>&gt;&lt;/<span style="color:#f92672">a</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">b</span>&gt;&lt;/<span style="color:#f92672">b</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">strong</span>&gt;&lt;/<span style="color:#f92672">strong</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">i</span>&gt;&lt;/<span style="color:#f92672">i</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">em</span>&gt;&lt;/<span style="color:#f92672">em</span>&gt;
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">&lt;</span>/img/&gt;
+</span></span></code></pre></div><h3 id="标签属性">
+<a class="header-anchor" href="#%e6%a0%87%e7%ad%be%e5%b1%9e%e6%80%a7"></a>
+标签属性
+</h3><p>class id style</p>
+<p>href</p>
+<p>src width height alt</p>
+<p>name</p>
+<h4 id="form表单">
+<a class="header-anchor" href="#form%e8%a1%a8%e5%8d%95"></a>
+form表单
+</h4><p>input输入框，单选框，多选框</p>
+<p>select下拉框</p>
+<p>label标签</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span><span style="color:#75715e">&lt;!DOCTYPE html&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">html</span> <span style="color:#a6e22e">lang</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;en&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">head</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">charset</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;UTF-8&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;viewport&#34;</span> <span style="color:#a6e22e">content</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;width=device-width, initial-scale=1.0&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">title</span>&gt;Document&lt;/<span style="color:#f92672">title</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">head</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>    12345d
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">hr</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">h1</span>&gt;这是一个测试&lt;/<span style="color:#f92672">h1</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">h2</span>&gt;这是一个测试&lt;/<span style="color:#f92672">h2</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">h3</span>&gt;这是一个测试&lt;/<span style="color:#f92672">h3</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">h4</span>&gt;这是一个测试&lt;/<span style="color:#f92672">h4</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">h5</span>&gt;这是一个测试&lt;/<span style="color:#f92672">h5</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">h6</span>&gt;这是一个测试&lt;/<span style="color:#f92672">h6</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">p</span>&gt;
+</span></span><span style="display:flex;"><span>        谁念西风独自凉，萧萧黄叶闭疏窗，沉思往事立残阳。
+</span></span><span style="display:flex;"><span>        嗟叹红颜泪、英雄殁，人世苦多。山河永寂、怎堪欢颜。
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">p</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">span</span>&gt;这是一个测试&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">br</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">a</span>&gt;这是一个测试&lt;/<span style="color:#f92672">a</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">br</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">b</span>&gt;这是一个测试&lt;/<span style="color:#f92672">b</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">br</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">strong</span>&gt;这是一个测试&lt;/<span style="color:#f92672">strong</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">br</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">i</span>&gt;这是一个测试&lt;/<span style="color:#f92672">i</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">br</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">em</span>&gt;这是一个测试&lt;/<span style="color:#f92672">em</span>&gt;
+</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">&lt;</span>/img/&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">br</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">form</span> <span style="color:#a6e22e">action</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span> <span style="color:#a6e22e">method</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;post&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text&#34;</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;123&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">br</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;radio&#34;</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;sex&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">br</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;checkbox&#34;</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;sex&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">br</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">select</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;a&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>            &lt;<span style="color:#f92672">option</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;x1&#34;</span>&gt;x&lt;/<span style="color:#f92672">option</span>&gt;
+</span></span><span style="display:flex;"><span>            &lt;<span style="color:#f92672">option</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;y1&#34;</span>&gt;y&lt;/<span style="color:#f92672">option</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;/<span style="color:#f92672">select</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">br</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">label</span> <span style="color:#a6e22e">for</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;ch2&#34;</span>&gt;年龄&lt;/<span style="color:#f92672">label</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;checkbox&#34;</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;ab&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;ch1&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;checkbox&#34;</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;cd&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;ch2&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">form</span>&gt;    
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">br</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">html</span>&gt;
+</span></span></code></pre></div><h2 id="实战简易博客">
+<a class="header-anchor" href="#%e5%ae%9e%e6%88%98%e7%ae%80%e6%98%93%e5%8d%9a%e5%ae%a2"></a>
+实战，简易博客
+</h2><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span><span style="color:#75715e">&lt;?php
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    $title = &#34;魏鑫的博客&#34;;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    $bgColor =&#34;#66ccff&#34;; 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">?&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!DOCTYPE html&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">html</span> <span style="color:#a6e22e">lang</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;en&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">head</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">charset</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;UTF-8&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;viewport&#34;</span> <span style="color:#a6e22e">content</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;width=device-width, initial-scale=1.0&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">title</span>&gt;<span style="color:#75715e">&lt;?php echo $title ?&gt;</span>&lt;/<span style="color:#f92672">title</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">style</span>&gt;
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">body</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">font-family</span>: Arial, <span style="color:#66d9ef">sans-serif</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">line-height</span>: <span style="color:#ae81ff">1.6</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">margin</span>: <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">padding</span>: <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">background-color</span>: <span style="color:#f92672">&lt;?</span>php echo <span style="color:#960050;background-color:#1e0010">$</span>bgColor; <span style="color:#960050;background-color:#1e0010">?&gt;</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">container</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">max-width</span>: <span style="color:#ae81ff">1200</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">margin</span>: <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">auto</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">padding</span>: <span style="color:#ae81ff">20</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">navbar</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">background-color</span>: <span style="color:#ae81ff">#333</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">overflow</span>: <span style="color:#66d9ef">hidden</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">navbar</span> <span style="color:#f92672">a</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">float</span>: <span style="color:#66d9ef">left</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">display</span>: <span style="color:#66d9ef">block</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">color</span>: <span style="color:#66d9ef">white</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">text-align</span>: <span style="color:#66d9ef">center</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">padding</span>: <span style="color:#ae81ff">14</span><span style="color:#66d9ef">px</span> <span style="color:#ae81ff">16</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">text-decoration</span>: <span style="color:#66d9ef">none</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">navbar</span> <span style="color:#f92672">a</span>:<span style="color:#a6e22e">hover</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">background-color</span>: <span style="color:#ae81ff">#ddd</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">color</span>: <span style="color:#66d9ef">black</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">title</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">text-align</span>: <span style="color:#66d9ef">center</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">margin-bottom</span>: <span style="color:#ae81ff">20</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">text-area</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">width</span>: <span style="color:#ae81ff">80</span><span style="color:#66d9ef">%</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">margin</span>: <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">auto</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">padding</span>: <span style="color:#ae81ff">20</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">border</span>: <span style="color:#ae81ff">1</span><span style="color:#66d9ef">px</span> <span style="color:#66d9ef">solid</span> <span style="color:#ae81ff">#ccc</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">background-color</span>: <span style="color:#ae81ff">#f9f9f9</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">style</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">head</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;navbar&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;#home&#34;</span>&gt;首页&lt;/<span style="color:#f92672">a</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;#about&#34;</span>&gt;关于我&lt;/<span style="color:#f92672">a</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;#posts&#34;</span>&gt;博客&lt;/<span style="color:#f92672">a</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;#contact&#34;</span>&gt;联系我&lt;/<span style="color:#f92672">a</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;?php
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    $content = &#34;这里是魏鑫的博客内容。您可以使用HTML和CSS编写自己的网页。&#34;;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    $createDay =  &#34;2023.11.1&#34;;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">?&gt;</span>
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;container&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">h1</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;title&#34;</span>&gt;欢迎来到我的博客&lt;/<span style="color:#f92672">h1</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text-area&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>            &lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;create-day&#34;</span>&gt;<span style="color:#75715e">&lt;?php echo $createDay ?&gt;</span>&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">&lt;?php echo $content ?&gt;</span>
+</span></span><span style="display:flex;"><span>        &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;?php
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    $content = &#34;魏鑫大傻逼&#34;;        //变量重复赋值，代码执行自上而下
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    $createDay = &#34;2323.23.23&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">?&gt;</span>
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text-area&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>            &lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;create-day&#34;</span>&gt;2023.09.22&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>            个人介绍
+</span></span><span style="display:flex;"><span>        &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;?php
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    $createDay = &#34;2233.22.11&#34;;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    echo &#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">            &lt;div class=&#34;text-area&#34;&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">            &lt;span class=&#34;create-day&#34;&gt;&#39;.$createDay.&#39;&lt;/span&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">            文章列表
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        &lt;/div&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    &#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">?&gt;</span>
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text-area&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>            &lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;create-day&#34;</span>&gt;2023.09.21&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>            联系方式等
+</span></span><span style="display:flex;"><span>        &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text-area&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>            &lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;create-day&#34;</span>&gt;<span style="color:#75715e">&lt;?php echo $createDay ?&gt;</span>&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">&lt;?php echo $content ?&gt;</span>
+</span></span><span style="display:flex;"><span>        &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">html</span>&gt;
+</span></span></code></pre></div><h2 id="eofheredoc定界符">
+<a class="header-anchor" href="#eofheredoc%e5%ae%9a%e7%95%8c%e7%ac%a6"></a>
+EOF(heredoc)定界符
+</h2><ul>
+<li>以&laquo;&lt;EOF开始标记开始，以EOF结束标记结束</li>
+<li>结束标记必须顶头写，独一行写，不能有缩进和空格</li>
+<li>EOF 可以用任意其它字符代替，开始标记和结束标记相同即可，比如常用大写的 EOT、EOD、EOF 来表示，但是不只限于那几个(也可以用:JSON、HTML等)，只要保证开始标记和结束标记不在正文中出现即可。</li>
+<li>位于开始标记和结束标记之间的变量可以被正常解析，但是函数则不可以。在 heredoc中，变量不需要用连接符.或，来拼接</li>
+<li>当内容需要内嵌引号(单引号或双引号)时，不需要加转义符，本身对单双引号转义。</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
+</span></span><span style="display:flex;"><span>    $a <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;sqqq&#34;</span>;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">echo</span> <span style="color:#f92672">&lt;&lt;&lt;</span><span style="color:#a6e22e">EOF</span> <span style="color:#ae81ff">12312341234</span>$a <span style="color:#a6e22e">sadfadsf</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">EOF</span>;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">?&gt;</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#66d9ef">echo</span> <span style="color:#f92672">&lt;&lt;&lt;</span><span style="color:#a6e22e">EOF</span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;双引号外所有被排列好的格式都会被保留&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;但是双引号内会保留转义符的转义效果，比如table:</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">和换行：</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">下一行&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">你看页面有\t吗？</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">\n</span> <span style="color:#a6e22e">\t</span> <span style="color:#a6e22e">和引号没关系吧</span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;单引号 \t \n是否能看到&#39;</span>
+</span></span></code></pre></div><h2 id="总结php里连接字符串与变量的方法">
+<a class="header-anchor" href="#%e6%80%bb%e7%bb%93php%e9%87%8c%e8%bf%9e%e6%8e%a5%e5%ad%97%e7%ac%a6%e4%b8%b2%e4%b8%8e%e5%8f%98%e9%87%8f%e7%9a%84%e6%96%b9%e6%b3%95"></a>
+总结：php里连接字符串与变量的方法
+</h2><h3 id="1直接连接">
+<a class="header-anchor" href="#1%e7%9b%b4%e6%8e%a5%e8%bf%9e%e6%8e%a5"></a>
+1.直接连接
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span>$name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;wx&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#34;hello,&#34;</span><span style="color:#f92672">.</span>$name;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;hello&#39;</span><span style="color:#f92672">.</span>$name;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#34;hello,</span><span style="color:#e6db74">$name</span><span style="color:#e6db74">&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">........</span>
+</span></span></code></pre></div><h3 id="2echo输出多个变量">
+<a class="header-anchor" href="#2echo%e8%be%93%e5%87%ba%e5%a4%9a%e4%b8%aa%e5%8f%98%e9%87%8f"></a>
+2.echo输出多个变量
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span>$name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;world&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#34;hello,</span><span style="color:#e6db74">$name</span><span style="color:#e6db74">&#34;</span>;
+</span></span></code></pre></div><h3 id="eof定界符heredoc和nowdoc">
+<a class="header-anchor" href="#eof%e5%ae%9a%e7%95%8c%e7%ac%a6heredoc%e5%92%8cnowdoc"></a>
+EOF定界符(heredoc)和(nowdoc)
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#a6e22e">php</span>
+</span></span><span style="display:flex;"><span>	$name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;hello&#39;</span>;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&lt;&lt;&lt;</span><span style="color:#e6db74">EOF</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">	$name world
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">	</span><span style="color:#e6db74">EOF</span>;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span>$name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;hello&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&lt;&lt;&lt;&#34;</span><span style="color:#e6db74">EOF</span><span style="color:#e6db74">&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">$name world
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"></span><span style="color:#e6db74">EOF</span>;
+</span></span></code></pre></div><h3 id="4模板字符串">
+<a class="header-anchor" href="#4%e6%a8%a1%e6%9d%bf%e5%ad%97%e7%ac%a6%e4%b8%b2"></a>
+4.模板字符串
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#34;hello,</span><span style="color:#e6db74">{</span>$name<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>;
+</span></span><span style="display:flex;"><span>$name <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;name&#34;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#34;hello&#34;</span>];
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#34;hello,</span><span style="color:#e6db74">{</span>$name[<span style="color:#e6db74">&#39;name&#39;</span>]<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>;
+</span></span></code></pre></div><h3 id="5printf和sprintf">
+<a class="header-anchor" href="#5printf%e5%92%8csprintf"></a>
+5.printf()和sprintf()
+</h3><p>printf是直接输出，不返回任何值</p>
+<p>sprintf不输出，但有返回值</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span>$name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;hello&#34;</span>;
+</span></span><span style="display:flex;"><span>$age<span style="color:#f92672">=</span><span style="color:#ae81ff">35</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;魏鑫%s，今年%s&#34;</span>,$name,$age);
+</span></span></code></pre></div><h2 id="运算符">
+<a class="header-anchor" href="#%e8%bf%90%e7%ae%97%e7%ac%a6"></a>
+运算符
+</h2><table>
+  <thead>
+      <tr>
+          <th>运算符</th>
+          <th>名称</th>
+          <th>描述</th>
+          <th>实例</th>
+          <th>结果</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>x + y</td>
+          <td>加</td>
+          <td>x 和 y 的和</td>
+          <td>2 + 2</td>
+          <td>4</td>
+      </tr>
+      <tr>
+          <td>x - y</td>
+          <td>减</td>
+          <td>x 和 y 的差</td>
+          <td>5 - 2</td>
+          <td>3</td>
+      </tr>
+      <tr>
+          <td>x * y</td>
+          <td>乘</td>
+          <td>x 和 y 的积</td>
+          <td>5 * 2</td>
+          <td>10</td>
+      </tr>
+      <tr>
+          <td>x / y</td>
+          <td>除</td>
+          <td>x 和 y 的商</td>
+          <td>15 / 5</td>
+          <td>3</td>
+      </tr>
+      <tr>
+          <td>x % y</td>
+          <td>模（除法的余数）</td>
+          <td>x 除以 y 的余数</td>
+          <td>5 % 2 10 % 8 10 % 2</td>
+          <td>1 2 0</td>
+      </tr>
+      <tr>
+          <td>-x</td>
+          <td>设置负数</td>
+          <td>取 x 的相反符号</td>
+          <td><code>&lt;?php $x = 2; echo -$x; ?&gt;</code></td>
+          <td>-2</td>
+      </tr>
+      <tr>
+          <td>~x</td>
+          <td>取反</td>
+          <td>x 取反，按二进制位进行&quot;取反&quot;运算。运算规则：<code>~1=-2;    ~0=-1;</code></td>
+          <td><code>&lt;?php $x = 2; echo ~$x; ?&gt;</code></td>
+          <td>-3</td>
+      </tr>
+      <tr>
+          <td>a . b</td>
+          <td>并置</td>
+          <td>连接两个字符串</td>
+          <td>&ldquo;Hi&rdquo; . &ldquo;Ha&rdquo;</td>
+          <td>HiHa</td>
+      </tr>
+  </tbody>
+</table>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
+</span></span><span style="display:flex;"><span>    $x <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>;
+</span></span><span style="display:flex;"><span>    $y <span style="color:#f92672">=</span> <span style="color:#ae81ff">6</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">echo</span> ($x <span style="color:#f92672">+</span> $y);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#34;&lt;br&gt;&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">echo</span> ($x <span style="color:#f92672">-</span> $y);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#34;&lt;br&gt;&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">echo</span> ($x <span style="color:#f92672">%</span> $y);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#34;&lt;br&gt;&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">echo</span> <span style="color:#f92672">-</span>$x;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//整数之间的整除，参数也必须是整数，向下取整
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">var_dump</span>(<span style="color:#a6e22e">intdiv</span>(<span style="color:#ae81ff">10</span>,<span style="color:#ae81ff">3</span>));
+</span></span><span style="display:flex;"><span><span style="color:#75715e">?&gt;</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span></code></pre></div><table>
+  <thead>
+      <tr>
+          <th>运算符</th>
+          <th>等同于</th>
+          <th>描述</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>x = y</td>
+          <td>x = y</td>
+          <td>左操作数被设置为右侧表达式的值</td>
+      </tr>
+      <tr>
+          <td>x += y</td>
+          <td>x = x + y</td>
+          <td>加</td>
+      </tr>
+      <tr>
+          <td>x -= y</td>
+          <td>x = x - y</td>
+          <td>减</td>
+      </tr>
+      <tr>
+          <td>x *= y</td>
+          <td>x = x * y</td>
+          <td>乘</td>
+      </tr>
+      <tr>
+          <td>x /= y</td>
+          <td>x = x / y</td>
+          <td>除</td>
+      </tr>
+      <tr>
+          <td>x %= y</td>
+          <td>x = x % y</td>
+          <td>模（除法的余数）</td>
+      </tr>
+      <tr>
+          <td>a .= b</td>
+          <td>a = a . b</td>
+          <td>连接两个字符串</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="递增递减运算符">
+<a class="header-anchor" href="#%e9%80%92%e5%a2%9e%e9%80%92%e5%87%8f%e8%bf%90%e7%ae%97%e7%ac%a6"></a>
+递增/递减运算符
+</h3><table>
+  <thead>
+      <tr>
+          <th>运算符</th>
+          <th>名称</th>
+          <th>描述</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>++ x</td>
+          <td>预递增</td>
+          <td>x 加 1，然后返回 x</td>
+      </tr>
+      <tr>
+          <td>x ++</td>
+          <td>后递增</td>
+          <td>返回 x，然后 x 加 1</td>
+      </tr>
+      <tr>
+          <td>&ndash; x</td>
+          <td>预递减</td>
+          <td>x 减 1，然后返回 x</td>
+      </tr>
+      <tr>
+          <td>x &ndash;</td>
+          <td>后递减</td>
+          <td>返回 x，然后 x 减 1</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="比较运算符">
+<a class="header-anchor" href="#%e6%af%94%e8%be%83%e8%bf%90%e7%ae%97%e7%ac%a6"></a>
+比较运算符
+</h3><table>
+  <thead>
+      <tr>
+          <th>运算符</th>
+          <th>名称</th>
+          <th>描述</th>
+          <th>实例</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>x == y</td>
+          <td>等于</td>
+          <td>如果 x 等于 y，则返回 true</td>
+          <td>5==8 返回 false</td>
+      </tr>
+      <tr>
+          <td>x === y</td>
+          <td>绝对等于</td>
+          <td>如果 x 等于 y，且它们类型相同，则返回 true</td>
+          <td>5===&ldquo;5&rdquo; 返回 false</td>
+      </tr>
+      <tr>
+          <td>x != y</td>
+          <td>不等于</td>
+          <td>如果 x 不等于 y，则返回 true</td>
+          <td>5!=8 返回 true</td>
+      </tr>
+      <tr>
+          <td>x &lt;&gt; y</td>
+          <td>不等于</td>
+          <td>如果 x 不等于 y，则返回 true</td>
+          <td>5&lt;&gt;8 返回 true</td>
+      </tr>
+      <tr>
+          <td>x !== y</td>
+          <td>不绝对等于</td>
+          <td>如果 x 不等于 y，或它们类型不相同，则返回 true</td>
+          <td>5!==&ldquo;5&rdquo; 返回 true</td>
+      </tr>
+      <tr>
+          <td>x &gt; y</td>
+          <td>大于</td>
+          <td>如果 x 大于 y，则返回 true</td>
+          <td>5&gt;8 返回 false</td>
+      </tr>
+      <tr>
+          <td>x &lt; y</td>
+          <td>小于</td>
+          <td>如果 x 小于 y，则返回 true</td>
+          <td>5&lt;8 返回 true</td>
+      </tr>
+      <tr>
+          <td>x &gt;= y</td>
+          <td>大于等于</td>
+          <td>如果 x 大于或者等于 y，则返回 true</td>
+          <td>5&gt;=8 返回 false</td>
+      </tr>
+      <tr>
+          <td>x &lt;= y</td>
+          <td>小于等于</td>
+          <td>如果 x 小于或者等于 y，则返回 true</td>
+          <td>5&lt;=8 返回 true</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="逻辑运算符">
+<a class="header-anchor" href="#%e9%80%bb%e8%be%91%e8%bf%90%e7%ae%97%e7%ac%a6"></a>
+逻辑运算符
+</h3><table>
+  <thead>
+      <tr>
+          <th>运算符</th>
+          <th>名称</th>
+          <th>描述</th>
+          <th>实例</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>x and y</td>
+          <td>与</td>
+          <td>如果 x 和 y 都为 true，则返回 true</td>
+          <td>x=6 y=3 (x &lt; 10 and y &gt; 1) 返回 true</td>
+      </tr>
+      <tr>
+          <td>x or y</td>
+          <td>或</td>
+          <td>如果 x 和 y 至少有一个为 true，则返回 true</td>
+          <td>x=6 y=3 (x==6 or y==5) 返回 true</td>
+      </tr>
+      <tr>
+          <td>x xor y</td>
+          <td>异或</td>
+          <td>如果 x 和 y 有且仅有一个为 true，则返回 true</td>
+          <td>x=6 y=3 (x==6 xor y==3) 返回 false</td>
+      </tr>
+      <tr>
+          <td>x &amp;&amp; y</td>
+          <td>与</td>
+          <td>如果 x 和 y 都为 true，则返回 true</td>
+          <td>x=6 y=3 (x &lt; 10 &amp;&amp; y &gt; 1) 返回 true</td>
+      </tr>
+      <tr>
+          <td>x || y</td>
+          <td>或</td>
+          <td>如果 x 和 y 至少有一个为 true，则返回 true</td>
+          <td>x=6 y=3 (x==5 || y==5) 返回 false</td>
+      </tr>
+      <tr>
+          <td>! x</td>
+          <td>非</td>
+          <td>如果 x 不为 true，则返回 true</td>
+          <td>x=6 y=3 !(x==y) 返回 true</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="条件语句">
+<a class="header-anchor" href="#%e6%9d%a1%e4%bb%b6%e8%af%ad%e5%8f%a5"></a>
+条件语句
+</h2><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
+</span></span><span style="display:flex;"><span>$a <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> ($a <span style="color:#f92672">==</span> <span style="color:#ae81ff">3</span>){
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">echo</span> $a;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">elseif</span> ($a <span style="color:#f92672">==</span> <span style="color:#ae81ff">4</span>){
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">echo</span> $a;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">else</span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#34;no&#34;</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
+</span></span><span style="display:flex;"><span>$a <span style="color:#f92672">=</span> <span style="color:#ae81ff">20</span>;
+</span></span><span style="display:flex;"><span>$b <span style="color:#f92672">=</span> <span style="color:#ae81ff">40</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">switch</span> ($a <span style="color:#f92672">-</span> $b) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">case</span> <span style="color:#ae81ff">10</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#34;1&#34;</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">case</span> <span style="color:#ae81ff">20</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#34;2&#34;</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">default</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#34;3&#34;</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
+</span></span><span style="display:flex;"><span>$a <span style="color:#f92672">=</span> <span style="color:#ae81ff">20</span>;
+</span></span><span style="display:flex;"><span>$b <span style="color:#f92672">=</span> <span style="color:#ae81ff">40</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> ($c <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; $c <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">10</span>; $c<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#34;num:&#34;</span><span style="color:#f92672">.</span>$c<span style="color:#f92672">.</span><span style="color:#a6e22e">PHP_EOL</span>; <span style="color:#75715e">//PHP_EOL表示换行符
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></code></pre></div><h2 id="数组-1">
+<a class="header-anchor" href="#%e6%95%b0%e7%bb%84-1"></a>
+数组
+</h2><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span>$a <span style="color:#f92672">=</span> <span style="color:#66d9ef">array</span>(<span style="color:#e6db74">&#34;1&#34;</span>,<span style="color:#e6db74">&#34;2&#34;</span>,<span style="color:#e6db74">&#34;3&#34;</span>);
+</span></span><span style="display:flex;"><span>$b <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;1&#34;</span>,<span style="color:#e6db74">&#34;2&#34;</span>,<span style="color:#e6db74">&#34;3&#34;</span>];
+</span></span><span style="display:flex;"><span><span style="color:#75715e">///////////////////////////
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>$a[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;1&#34;</span>;
+</span></span><span style="display:flex;"><span>$a[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;2&#34;</span>;
+</span></span><span style="display:flex;"><span>$a[<span style="color:#ae81ff">2</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;3&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">print_r</span>($a);
+</span></span></code></pre></div><h3 id="关联数组">
+<a class="header-anchor" href="#%e5%85%b3%e8%81%94%e6%95%b0%e7%bb%84"></a>
+关联数组
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span>$a <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;a&#34;</span><span style="color:#f92672">=&gt;</span><span style="color:#e6db74">&#34;1&#34;</span>,<span style="color:#e6db74">&#34;b&#34;</span><span style="color:#f92672">+&gt;</span><span style="color:#e6db74">&#34;2&#34;</span>];
+</span></span><span style="display:flex;"><span><span style="color:#75715e">////////////////////////////
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>$a[<span style="color:#e6db74">&#34;a&#34;</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;1&#34;</span>
+</span></span></code></pre></div><h3 id="遍历数组">
+<a class="header-anchor" href="#%e9%81%8d%e5%8e%86%e6%95%b0%e7%bb%84"></a>
+遍历数组
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
+</span></span><span style="display:flex;"><span>$b <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;1&#34;</span>,<span style="color:#e6db74">&#34;2&#34;</span>,<span style="color:#e6db74">&#34;3&#34;</span>];
+</span></span><span style="display:flex;"><span>$a[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;1&#34;</span>;
+</span></span><span style="display:flex;"><span>$a[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;2&#34;</span>;
+</span></span><span style="display:flex;"><span>$a[<span style="color:#ae81ff">2</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;3&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">foreach</span> ($a <span style="color:#66d9ef">as</span> $key <span style="color:#f92672">=&gt;</span> $value) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">echo</span> $key<span style="color:#f92672">.</span><span style="color:#e6db74">&#34;: &#34;</span><span style="color:#f92672">.</span>$value<span style="color:#f92672">.</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><img alt="image-20241111202717071" src="/img/image-20241111202717071.png"></p>
+<h3 id="多维数组">
+<a class="header-anchor" href="#%e5%a4%9a%e7%bb%b4%e6%95%b0%e7%bb%84"></a>
+多维数组
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span>$a [[<span style="color:#e6db74">&#34;a1&#34;</span>,<span style="color:#e6db74">&#34;a2&#34;</span>,<span style="color:#e6db74">&#34;a3&#34;</span>],<span style="color:#e6db74">&#34;b&#34;</span>,<span style="color:#e6db74">&#34;c&#34;</span>];
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">print_r</span>([<span style="color:#ae81ff">0</span>][<span style="color:#ae81ff">0</span>]);
+</span></span></code></pre></div><p>#可以嵌套foreach，用if和break组合玩</p>
+<h2 id="函数">
+<a class="header-anchor" href="#%e5%87%bd%e6%95%b0"></a>
+函数
+</h2><p>时间函数：time(),date()</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">var_dump</span>(<span style="color:#a6e22e">time</span>());  
+</span></span><span style="display:flex;"><span>$a <span style="color:#f92672">=</span> <span style="color:#a6e22e">date</span>(<span style="color:#e6db74">&#39;y-m-d H:i:s&#39;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">echo</span> $a;
+</span></span></code></pre></div><p>创建函数</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">a</span>(){
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">echo</span> <span style="color:#a6e22e">date</span>(<span style="color:#e6db74">&#39;y-m-d H:i:s&#39;</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">a</span>();
+</span></span></code></pre></div><p>传入参数</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">a</span>($b,$c){
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">echo</span> $c<span style="color:#f92672">+</span>$b;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">a</span>(<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">a</span>(<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3.3</span>);
+</span></span></code></pre></div><p>严格模式</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#66d9ef">declare</span>(<span style="color:#a6e22e">strict_types</span><span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">a</span>(<span style="color:#a6e22e">int</span> $b,<span style="color:#a6e22e">int</span> $c){
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">echo</span> $c<span style="color:#f92672">+</span>$b;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">a</span>(<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3.3</span>);
+</span></span></code></pre></div><p>全局变量</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span>$a <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">an</span>(){
+</span></span><span style="display:flex;"><span>    $b <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">global</span> $a;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">echo</span> $a <span style="color:#f92672">+</span> $b;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">an</span>();
+</span></span></code></pre></div><p>static作用域</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">func1</span>(){
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">static</span> $a <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>    $a<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">echo</span> $a<span style="color:#f92672">.</span><span style="color:#a6e22e">PHP_EOL</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">func1</span>();
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">func1</span>();
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">func1</span>();
+</span></span></code></pre></div><p>unset() 删除函数 isset()查询是否有这变量</p>
+<h3 id="超级全局变量">
+<a class="header-anchor" href="#%e8%b6%85%e7%ba%a7%e5%85%a8%e5%b1%80%e5%8f%98%e9%87%8f"></a>
+超级全局变量
+</h3><p><img alt="image-20241112181036772" src="/img/image-20241112181036772.png"></p>
+<h4 id="globals">
+<a class="header-anchor" href="#globals"></a>
+$GLOBALS
+</h4><p>是一个包含了全局变量的全局组合数组，变量名就是数组的键</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#a6e22e">print_r</span>($GLOBALS);
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span>$a <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;sss&#39;</span>;
+</span></span><span style="display:flex;"><span>$b <span style="color:#f92672">=</span> <span style="color:#ae81ff">23</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">a</span>(){
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">global</span> $a,$b;
+</span></span><span style="display:flex;"><span>    $a <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;www&#39;</span>;
+</span></span><span style="display:flex;"><span>    $b <span style="color:#f92672">=</span> <span style="color:#ae81ff">13</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">print_r</span>($GLOBALS);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">a</span>();
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">echo</span> $a;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">echo</span> $b;
+</span></span></code></pre></div><h4 id="_server">
+<a class="header-anchor" href="#_server"></a>
+$_SERVER
+</h4><p><img alt="image-20241112182533502" src="/img/image-20241112182533502.png"></p>
+<blockquote>
+<p>print_r(_SERVER);</p>
+</blockquote>
+<ul>
+<li>详情查询菜鸟</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#75715e">#接受一个正整数，返回处1与本身的所有因子
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
+</span></span><span style="display:flex;"><span>$b <span style="color:#f92672">=</span>[];
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">func1</span>($a){
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> ($i <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>; $i <span style="color:#f92672">&lt;</span> $a; $i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">global</span> $b;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> ($a <span style="color:#f92672">%</span> $i <span style="color:#f92672">===</span> <span style="color:#ae81ff">0</span>){
+</span></span><span style="display:flex;"><span>            $b[] <span style="color:#f92672">=</span> $i;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">func1</span>(<span style="color:#ae81ff">12</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">foreach</span> ($b <span style="color:#66d9ef">as</span> $c <span style="color:#f92672">=&gt;</span> $d) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">echo</span> $c<span style="color:#f92672">.</span><span style="color:#e6db74">&#34; = &#34;</span><span style="color:#f92672">.</span>$d<span style="color:#f92672">.</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="其他运算符">
+<a class="header-anchor" href="#%e5%85%b6%e4%bb%96%e8%bf%90%e7%ae%97%e7%ac%a6"></a>
+其他运算符
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#75715e">#+号合并
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
+</span></span><span style="display:flex;"><span>$a <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;a&#34;</span><span style="color:#f92672">=&gt;</span><span style="color:#e6db74">&#34;b&#34;</span>,<span style="color:#ae81ff">1</span><span style="color:#f92672">=&gt;</span>[<span style="color:#e6db74">&#34;c&#34;</span><span style="color:#f92672">=&gt;</span><span style="color:#e6db74">&#34;d&#34;</span>]];
+</span></span><span style="display:flex;"><span>$b <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;w&#34;</span><span style="color:#f92672">=&gt;</span><span style="color:#e6db74">&#34;s&#34;</span>];
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">print_r</span>($a<span style="color:#f92672">+</span>$b);
+</span></span></code></pre></div><p><img alt="image-20241112192637212" src="/img/image-20241112192637212.png"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#75715e">#== 比较两数组是否相等  ===比较两数组键值对，顺序，类型是否相等
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
+</span></span><span style="display:flex;"><span>$a <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;w&#34;</span><span style="color:#f92672">=&gt;</span><span style="color:#ae81ff">1</span>];
+</span></span><span style="display:flex;"><span>$b <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;w&#34;</span><span style="color:#f92672">=&gt;</span><span style="color:#e6db74">&#34;1&#34;</span>];
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">var_dump</span>($a<span style="color:#f92672">==</span>$b);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">var_dump</span>($a<span style="color:#f92672">===</span>$b);
+</span></span></code></pre></div><p>!=和!==使用方法与上面一样，&lt;,&gt;也是</p>
+<h4 id="三元运算符">
+<a class="header-anchor" href="#%e4%b8%89%e5%85%83%e8%bf%90%e7%ae%97%e7%ac%a6"></a>
+三元运算符
+</h4><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span>$a <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>;
+</span></span><span style="display:flex;"><span>$b <span style="color:#f92672">=</span> <span style="color:#a6e22e">isset</span>($a)<span style="color:#f92672">?</span> $a<span style="color:#f92672">:</span><span style="color:#e6db74">&#34;no&#34;</span>;
+</span></span></code></pre></div><h4 id="空合并运算符">
+<a class="header-anchor" href="#%e7%a9%ba%e5%90%88%e5%b9%b6%e8%bf%90%e7%ae%97%e7%ac%a6"></a>
+空合并运算符
+</h4><p><img alt="image-20241112194619423" src="/img/image-20241112194619423.png"></p>
+<h4 id="组合比较符">
+<a class="header-anchor" href="#%e7%bb%84%e5%90%88%e6%af%94%e8%be%83%e7%ac%a6"></a>
+组合比较符
+</h4><p>&lt;=&gt;</p>
+<p><img alt="image-20241112195509118" src="/img/image-20241112195509118.png"></p>
+<h2 id="比较">
+<a class="header-anchor" href="#%e6%af%94%e8%be%83"></a>
+比较
+</h2><h3 id="数据类型的比较">
+<a class="header-anchor" href="#%e6%95%b0%e6%8d%ae%e7%b1%bb%e5%9e%8b%e7%9a%84%e6%af%94%e8%be%83"></a>
+数据类型的比较
+</h3><p><img alt="image-20241112195846945" src="/img/image-20241112195846945.png"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (<span style="color:#ae81ff">42</span> <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;42&#34;</span>){
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#34;true&#34;</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/////////////////
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">if</span> (<span style="color:#ae81ff">42</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#34;42&#34;</span>){
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#34;true&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><blockquote>
+<p>可用gettype()只比较数据类型</p>
+</blockquote>
+<h3 id="比较underfined0falsenull空值">
+<a class="header-anchor" href="#%e6%af%94%e8%be%83underfined0falsenull%e7%a9%ba%e5%80%bc"></a>
+比较underfined,0,false,null,空值
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
+</span></span><span style="display:flex;"><span>$a <span style="color:#f92672">=</span> <span style="color:#66d9ef">NULL</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">var_dump</span>(<span style="color:#f92672">!</span><span style="color:#a6e22e">isset</span>($a));
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">var_dump</span>(<span style="color:#a6e22e">is_NULL</span>($a));	<span style="color:#75715e">//不定义$a要报错
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">var_dump</span>(<span style="color:#66d9ef">empty</span>($b))		<span style="color:#75715e">//empty()不定义变量也返回True
+</span></span></span></code></pre></div><h3 id="字符串相关函数">
+<a class="header-anchor" href="#%e5%ad%97%e7%ac%a6%e4%b8%b2%e7%9b%b8%e5%85%b3%e5%87%bd%e6%95%b0"></a>
+字符串相关函数
+</h3><p><img alt="image-20241112202120024" src="/img/image-20241112202120024.png"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
+</span></span><span style="display:flex;"><span>$a <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;God help thouse who stand in our way&#34;</span>;
+</span></span><span style="display:flex;"><span>$b <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;12 3&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">echo</span> <span style="color:#a6e22e">strlen</span>($b);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">echo</span> <span style="color:#a6e22e">strlen</span>($a);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">////////////////////////
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">echo</span> <span style="color:#a6e22e">strpos</span>($a, <span style="color:#e6db74">&#34;h&#34;</span>)<span style="color:#f92672">.</span><span style="color:#a6e22e">PHP_EOL</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">echo</span> <span style="color:#a6e22e">stripos</span>($a, <span style="color:#e6db74">&#34;w&#34;</span>)<span style="color:#f92672">.</span><span style="color:#a6e22e">PHP_EOL</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">echo</span> <span style="color:#a6e22e">strrpos</span>($b, <span style="color:#e6db74">&#34;h&#34;</span>)<span style="color:#f92672">.</span><span style="color:#a6e22e">PHP_EOL</span>;
+</span></span><span style="display:flex;"><span>$aa <span style="color:#f92672">=</span> <span style="color:#a6e22e">explode</span>(<span style="color:#e6db74">&#34; &#34;</span>, $a);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">var_dump</span>($aa);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">echo</span> <span style="color:#a6e22e">implode</span>(<span style="color:#e6db74">&#34;+&#34;</span>, $aa)<span style="color:#f92672">.</span><span style="color:#a6e22e">PHP_EOL</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">print_r</span>(<span style="color:#a6e22e">str_replace</span>(<span style="color:#e6db74">&#34;h&#34;</span>,<span style="color:#e6db74">&#34;t&#34;</span>,$a));
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"></code></pre></div>
+      
+    </div>
+    <footer class="article-footer">
+      
+
+      
+
+      
+        <a
+          data-aos="zoom-in"
+          href="https://fourwt.github.io/post/txt/php%E6%9D%82%E7%AC%94/#comments"
+          class="article-comment-link"
+        >
+          <span
+            class="post-comments-count valine-comment-count"
+            data-xid="https//fourwt.github.io/post/txt/php%e6%9d%82%e7%ac%94/"
+            itemprop="commentCount"
+          ></span>
+          留言
+        </a>
+      
+
+      
+
+      
+
+      
+
+      
+      <ul class="article-tag-list" itemprop="keywords">
+  
+    <li class="article-tag-list-item" data-aos="zoom-in">
+      <a
+        class="article-tag-list-link"
+        href="/tags/%e7%ac%94%e8%ae%b0"
+        rel="tag"
+        >笔记</a
+      >
+    </li>
+  
+</ul>
+
+    </footer>
+  </div>
+  
+    
+  <nav
+    id="article-nav"
+    data-aos="fade-up"
+  >
+    
+      <div class="article-nav-link-wrap article-nav-link-left">
+        
+          <img
+            data-src="https://img.paulzzh.com/touhou/random?8"
+            data-sizes="auto"
+            alt="python基础笔记"
+            class="lazyload"
+          />
+        
+        <a href="https://fourwt.github.io/post/txt/python%E6%9D%82%E7%AC%94/"></a>
+        <div class="article-nav-caption">前一篇</div>
+        <h3 class="article-nav-title">
+          
+            python基础笔记
+          
+        </h3>
+      </div>
+    
+
+    
+      <div class="article-nav-link-wrap article-nav-link-right">
+        
+          <img
+            data-src="https://img.paulzzh.com/touhou/random?5"
+            data-sizes="auto"
+            alt="CTF题目"
+            class="lazyload"
+          />
+        
+        <a href="https://fourwt.github.io/post/txt/ctf%E6%9D%82%E7%AC%94/"></a>
+        <div class="article-nav-caption">后一篇</div>
+        <h3 class="article-nav-title">
+          
+            CTF题目
+          
+        </h3>
+      </div>
+    
+  </nav>
+
+
+  
+</article>
+
+  <section
+    id="comments"
+    class="vcomment"
+    data-aos="fade-up"
+  ></section>
+
+
+
+
+
+
+
+
+
+
+</section>
+          
+            <aside id="sidebar">
+  <div class="sidebar-wrapper wrap-sticky">
+    <div
+      class="sidebar-wrap"
+      data-aos="fade-up"
+    >
+      
+        <div class="sidebar-toc-sidebar">
+          <div class="sidebar-toc">
+  <h3 class="toc-title">文章目录</h3>
+  <div class="sidebar-toc-wrapper toc-div-class">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#简介">简介</a></li>
+    <li><a href="#静态网页和动态网页">静态网页和动态网页</a></li>
+    <li><a href="#web访问流程">web访问流程</a></li>
+    <li><a href="#php基本语法">PHP基本语法</a>
+      <ul>
+        <li><a href="#输出方法echo-print">输出方法:echo print</a></li>
+        <li><a href="#注释">注释</a></li>
+        <li><a href="#变量">变量</a></li>
+        <li><a href="#命令行">命令行</a></li>
+        <li><a href="#数据类型">数据类型</a></li>
+        <li><a href="#整数">整数</a></li>
+        <li><a href="#浮点数">浮点数</a></li>
+        <li><a href="#布尔型">布尔型</a></li>
+        <li><a href="#数组">数组</a></li>
+        <li><a href="#对象">对象</a></li>
+        <li><a href="#null">NULL</a></li>
+        <li><a href="#resource-资源类型">resource 资源类型</a></li>
+      </ul>
+    </li>
+    <li><a href="#html快速回顾">HTML快速回顾</a>
+      <ul>
+        <li><a href="#注释-1">注释</a></li>
+        <li><a href="#标签语法">标签语法</a></li>
+        <li><a href="#标签属性">标签属性</a></li>
+      </ul>
+    </li>
+    <li><a href="#实战简易博客">实战，简易博客</a></li>
+    <li><a href="#eofheredoc定界符">EOF(heredoc)定界符</a></li>
+    <li><a href="#总结php里连接字符串与变量的方法">总结：php里连接字符串与变量的方法</a>
+      <ul>
+        <li><a href="#1直接连接">1.直接连接</a></li>
+        <li><a href="#2echo输出多个变量">2.echo输出多个变量</a></li>
+        <li><a href="#eof定界符heredoc和nowdoc">EOF定界符(heredoc)和(nowdoc)</a></li>
+        <li><a href="#4模板字符串">4.模板字符串</a></li>
+        <li><a href="#5printf和sprintf">5.printf()和sprintf()</a></li>
+      </ul>
+    </li>
+    <li><a href="#运算符">运算符</a>
+      <ul>
+        <li><a href="#递增递减运算符">递增/递减运算符</a></li>
+        <li><a href="#比较运算符">比较运算符</a></li>
+        <li><a href="#逻辑运算符">逻辑运算符</a></li>
+      </ul>
+    </li>
+    <li><a href="#条件语句">条件语句</a></li>
+    <li><a href="#数组-1">数组</a>
+      <ul>
+        <li><a href="#关联数组">关联数组</a></li>
+        <li><a href="#遍历数组">遍历数组</a></li>
+        <li><a href="#多维数组">多维数组</a></li>
+      </ul>
+    </li>
+    <li><a href="#函数">函数</a>
+      <ul>
+        <li><a href="#超级全局变量">超级全局变量</a></li>
+        <li><a href="#其他运算符">其他运算符</a></li>
+      </ul>
+    </li>
+    <li><a href="#比较">比较</a>
+      <ul>
+        <li><a href="#数据类型的比较">数据类型的比较</a></li>
+        <li><a href="#比较underfined0falsenull空值">比较underfined,0,false,null,空值</a></li>
+        <li><a href="#字符串相关函数">字符串相关函数</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+        </div>
+        <div class="sidebar-common-sidebar hidden">
+          
+<div class="sidebar-author">
+  <img
+    data-src="/avatar/avatar.png"
+    data-sizes="auto"
+    alt="Iota"
+    class="lazyload"
+  />
+  <div class="sidebar-author-name">Iota</div>
+  <div class="sidebar-description">就当无事发生...</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div>
+    <div class="sidebar-state-number">29</div>
+  </div>
+  <div class="sidebar-state-category">
+    <div>分类</div>
+    <div class="sidebar-state-number">
+      8
+    </div>
+  </div>
+  <div class="sidebar-state-tag">
+    <div>标签</div>
+    <div class="sidebar-state-number">4</div>
+  </div>
+</div>
+<div class="sidebar-social">
+  
+</div>
+<div class="sidebar-menu">
+  
+    <div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/"
+        aria-label="首页"
+      ></a>
+      <div class='sidebar-menu-icon icon rotate'>
+        
+          
+            &#xe62b;
+          
+        
+      </div>
+      <div class="sidebar-menu-link">首页</div>
+    </div>
+  
+    <div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/categories"
+        aria-label="分类"
+      ></a>
+      <div class='sidebar-menu-icon icon rotate'>
+        
+          
+            &#xe62b;
+          
+        
+      </div>
+      <div class="sidebar-menu-link">分类</div>
+    </div>
+  
+    <div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/archives"
+        aria-label="归档"
+      ></a>
+      <div class='sidebar-menu-icon icon rotate'>
+        
+          
+            &#xe62b;
+          
+        
+      </div>
+      <div class="sidebar-menu-link">归档</div>
+    </div>
+  
+    <div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/about"
+        aria-label="关于"
+      ></a>
+      <div class='sidebar-menu-icon icon rotate'>
+        
+          
+            &#xe62b;
+          
+        
+      </div>
+      <div class="sidebar-menu-link">关于</div>
+    </div>
+  
+    <div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/friend"
+        aria-label="友链"
+      ></a>
+      <div class='sidebar-menu-icon icon rotate'>
+        
+          
+            &#xe62b;
+          
+        
+      </div>
+      <div class="sidebar-menu-link">友链</div>
+    </div>
+  
+</div>
+
+        </div>
+      
+
+      
+        <div class="sidebar-btn-wrapper" style="position:static">
+          <div class="sidebar-toc-btn current"></div>
+          <div class="sidebar-common-btn"></div>
+        </div>
+      
+    </div>
+  </div>
+
+  
+</aside>
+
+          
+        </main>
+        
+
+
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+
+
+<footer id="footer">
+  <div style="width: 100%; overflow: hidden">
+    <div class="footer-line"></div>
+  </div>
+  <div id="footer-info">
+    <div>
+      <span class="icon-copyright"></span>
+      2020 -
+      2024
+      <span class="footer-info-sep rotate"></span>
+      Iota
+    </div>
+    
+      <div>
+        基于&nbsp;<a
+          href="https://gohugo.io/"
+          target="_blank"
+          >Hugo</a
+        >&nbsp; Theme.<a
+          href="https://github.com/D-Sketon/hugo-theme-reimu"
+          target="_blank"
+          >Reimu</a
+        >
+      </div>
+    
+    
+      <div>
+        <span class="icon-brush"
+          >&nbsp;
+            9.5k
+          </span
+        >
+        &nbsp;|&nbsp;
+        <span class="icon-coffee">&nbsp;
+          
+          
+
+          00:50
+        </span>
+      </div>
+    
+    
+    
+    
+      <div>
+        <span class="icon-eye"></span>
+        <span id="busuanzi_container_site_pv"
+          >总访问量&nbsp;<span
+            id="busuanzi_value_site_pv"
+          ></span
+        ></span>
+        &nbsp;|&nbsp;
+        <span class="icon-user"></span>
+        <span id="busuanzi_container_site_uv"
+          >总访客量&nbsp;<span
+            id="busuanzi_value_site_uv"
+          ></span
+        ></span>
+      </div>
+    
+  </div>
+</footer>
+
+        
+          <div class="sidebar-top">
+            <div class="sidebar-top-taichi rotate"></div>
+            <div class="arrow-up"></div>
+          </div>
+        
+        <div id="mask" class="hide"></div>
+      </div>
+      <nav id="mobile-nav">
+  <div class="sidebar-wrap">
+    
+      <div class="sidebar-toc-sidebar">
+        <div class="sidebar-toc">
+  <h3 class="toc-title">文章目录</h3>
+  <div class="sidebar-toc-wrapper toc-div-class">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#简介">简介</a></li>
+    <li><a href="#静态网页和动态网页">静态网页和动态网页</a></li>
+    <li><a href="#web访问流程">web访问流程</a></li>
+    <li><a href="#php基本语法">PHP基本语法</a>
+      <ul>
+        <li><a href="#输出方法echo-print">输出方法:echo print</a></li>
+        <li><a href="#注释">注释</a></li>
+        <li><a href="#变量">变量</a></li>
+        <li><a href="#命令行">命令行</a></li>
+        <li><a href="#数据类型">数据类型</a></li>
+        <li><a href="#整数">整数</a></li>
+        <li><a href="#浮点数">浮点数</a></li>
+        <li><a href="#布尔型">布尔型</a></li>
+        <li><a href="#数组">数组</a></li>
+        <li><a href="#对象">对象</a></li>
+        <li><a href="#null">NULL</a></li>
+        <li><a href="#resource-资源类型">resource 资源类型</a></li>
+      </ul>
+    </li>
+    <li><a href="#html快速回顾">HTML快速回顾</a>
+      <ul>
+        <li><a href="#注释-1">注释</a></li>
+        <li><a href="#标签语法">标签语法</a></li>
+        <li><a href="#标签属性">标签属性</a></li>
+      </ul>
+    </li>
+    <li><a href="#实战简易博客">实战，简易博客</a></li>
+    <li><a href="#eofheredoc定界符">EOF(heredoc)定界符</a></li>
+    <li><a href="#总结php里连接字符串与变量的方法">总结：php里连接字符串与变量的方法</a>
+      <ul>
+        <li><a href="#1直接连接">1.直接连接</a></li>
+        <li><a href="#2echo输出多个变量">2.echo输出多个变量</a></li>
+        <li><a href="#eof定界符heredoc和nowdoc">EOF定界符(heredoc)和(nowdoc)</a></li>
+        <li><a href="#4模板字符串">4.模板字符串</a></li>
+        <li><a href="#5printf和sprintf">5.printf()和sprintf()</a></li>
+      </ul>
+    </li>
+    <li><a href="#运算符">运算符</a>
+      <ul>
+        <li><a href="#递增递减运算符">递增/递减运算符</a></li>
+        <li><a href="#比较运算符">比较运算符</a></li>
+        <li><a href="#逻辑运算符">逻辑运算符</a></li>
+      </ul>
+    </li>
+    <li><a href="#条件语句">条件语句</a></li>
+    <li><a href="#数组-1">数组</a>
+      <ul>
+        <li><a href="#关联数组">关联数组</a></li>
+        <li><a href="#遍历数组">遍历数组</a></li>
+        <li><a href="#多维数组">多维数组</a></li>
+      </ul>
+    </li>
+    <li><a href="#函数">函数</a>
+      <ul>
+        <li><a href="#超级全局变量">超级全局变量</a></li>
+        <li><a href="#其他运算符">其他运算符</a></li>
+      </ul>
+    </li>
+    <li><a href="#比较">比较</a>
+      <ul>
+        <li><a href="#数据类型的比较">数据类型的比较</a></li>
+        <li><a href="#比较underfined0falsenull空值">比较underfined,0,false,null,空值</a></li>
+        <li><a href="#字符串相关函数">字符串相关函数</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+      </div>
+      <div class="sidebar-common-sidebar hidden">
+        
+<div class="sidebar-author">
+  <img
+    data-src="/avatar/avatar.png"
+    data-sizes="auto"
+    alt="Iota"
+    class="lazyload"
+  />
+  <div class="sidebar-author-name">Iota</div>
+  <div class="sidebar-description">就当无事发生...</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div>
+    <div class="sidebar-state-number">29</div>
+  </div>
+  <div class="sidebar-state-category">
+    <div>分类</div>
+    <div class="sidebar-state-number">
+      8
+    </div>
+  </div>
+  <div class="sidebar-state-tag">
+    <div>标签</div>
+    <div class="sidebar-state-number">4</div>
+  </div>
+</div>
+<div class="sidebar-social">
+  
+</div>
+<div class="sidebar-menu">
+  
+    <div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/"
+        aria-label="首页"
+      ></a>
+      <div class='sidebar-menu-icon icon rotate'>
+        
+          
+            &#xe62b;
+          
+        
+      </div>
+      <div class="sidebar-menu-link">首页</div>
+    </div>
+  
+    <div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/categories"
+        aria-label="分类"
+      ></a>
+      <div class='sidebar-menu-icon icon rotate'>
+        
+          
+            &#xe62b;
+          
+        
+      </div>
+      <div class="sidebar-menu-link">分类</div>
+    </div>
+  
+    <div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/archives"
+        aria-label="归档"
+      ></a>
+      <div class='sidebar-menu-icon icon rotate'>
+        
+          
+            &#xe62b;
+          
+        
+      </div>
+      <div class="sidebar-menu-link">归档</div>
+    </div>
+  
+    <div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/about"
+        aria-label="关于"
+      ></a>
+      <div class='sidebar-menu-icon icon rotate'>
+        
+          
+            &#xe62b;
+          
+        
+      </div>
+      <div class="sidebar-menu-link">关于</div>
+    </div>
+  
+    <div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/friend"
+        aria-label="友链"
+      ></a>
+      <div class='sidebar-menu-icon icon rotate'>
+        
+          
+            &#xe62b;
+          
+        
+      </div>
+      <div class="sidebar-menu-link">友链</div>
+    </div>
+  
+</div>
+
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-btn-wrapper">
+      <div class="sidebar-toc-btn current"></div>
+      <div class="sidebar-common-btn"></div>
+    </div>
+  
+</nav>
+
+    </div>
+    
+    
+
+
+
+
+
+
+  
+  
+  
+  
+  
+  
+  <script
+    src="https://npm.webcache.cn/lazysizes@5.3.2/lazysizes.min.js"
+    
+    
+    
+    
+    integrity="sha384-3gT/vsepWkfz/ff7PpWNUeMzeWoH3cDhm/A8jM7ouoAK0/fP/9bcHHR5kHq2nf&#43;e" crossorigin="anonymous"
+  ></script>
+
+
+
+
+  
+  
+  
+  
+  
+  
+  <script
+    src="https://npm.webcache.cn/clipboard@2.0.11/dist/clipboard.min.js"
+    
+    
+    
+    
+    integrity="sha384-J08i8An/QeARD9ExYpvphB8BsyOj3Gh2TSh1aLINKO3L0cMSH2dN3E22zFoXEi0Q" crossorigin="anonymous"
+  ></script>
+
+
+
+
+
+
+
+
+
+  
+      
+      <script src="/js/main.js" integrity="" crossorigin="anonymous" ></script>
+      
+
+
+
+  
+
+
+
+
+
+  
+      
+      <script src="/js/aos.js" integrity="" crossorigin="anonymous" ></script>
+      
+
+  <script>
+    var aosInit = () => {
+      AOS.init({
+        duration: 1000,
+        easing: "ease",
+        once: true,
+        offset: 50,
+      });
+    };
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", aosInit);
+    } else {
+      aosInit();
+    }
+  </script>
+
+
+
+
+
+
+
+
+  
+      
+      <script src="/js/pjax_main.js" integrity="" crossorigin="anonymous" data-pjax></script>
+      
+
+
+
+
+
+  
+
+  
+  
+  
+  
+  
+  
+  <script
+    src="https://npm.webcache.cn/mouse-firework@0.0.6/dist/index.umd.js"
+    
+    
+    
+    
+    integrity="sha384-vkGvf25gm1C1PbcoD5dNfc137HzNL/hr1RKA5HniJOaawtvUmH5lTVFgFAruE9Ge" crossorigin="anonymous"
+  ></script>
+
+
+<script>
+  if (window.firework) {
+    const options = JSON.parse("{\"excludeelements\":[\"a\",\"button\"],\"particles\":[{\"colors\":[\"#ff5252\",\"#ff7c7c\",\"#ffafaf\",\"#ffd0d0\"],\"duration\":[1200,1800],\"easing\":\"easeOutExpo\",\"move\":[\"emit\"],\"number\":20,\"shape\":\"circle\",\"shapeOptions\":{\"alpha\":[0.3,0.5],\"radius\":[16,32]}},{\"colors\":[\"#ff0000\"],\"duration\":[1200,1800],\"easing\":\"easeOutExpo\",\"move\":[\"diffuse\"],\"number\":1,\"shape\":\"circle\",\"shapeOptions\":{\"alpha\":[0.2,0.5],\"lineWidth\":6,\"radius\":20}}]}");
+    options.excludeElements = options.excludeelements;
+    delete options.excludeelements;
+    window.firework(options);
+  }
+</script>
+
+
+
+
+
+<script>
+  function initLive2d() {
+    live2d.init('https:\/\/fastly.jsdelivr.net\/gh\/D-Sketon\/plugin-live2d\/', {themeTipsPath: ""});
+  }
+</script> 
+
+  
+  
+  
+  
+  
+  
+  <script
+    src="https://fastly.jsdelivr.net/gh/D-Sketon/plugin-live2d/js/live2d-autoload.js"
+    
+    async
+    
+    onload="initLive2d()"
+    
+  ></script>
+
+
+
+
+
+
+<div id="lazy-script">
+  <div>
+    
+    
+      
+
+
+
+
+
+  
+      
+      <script src="/js/insert_highlight.js" integrity="" crossorigin="anonymous" data-pjax></script>
+      
+
+      
+      
+      
+      
+      <script type="module" data-pjax>
+        const PhotoSwipeLightbox = (await safeImport("https:\/\/npm.webcache.cn\/photoswipe@5.4.4\/dist\/photoswipe-lightbox.esm.min.js", "sha384-DiL6M\/gG\u002bwmTxmCRZyD1zee6lIhawn5TGvED0FOh7fXcN9B0aZ9dexSF\/N6lrZi\/")).default;
+
+        const pswp = () => {
+          if (_$$('.article-entry a.article-gallery-item').length > 0) {
+            new PhotoSwipeLightbox({
+              gallery: '.article-entry',
+              children: 'a.article-gallery-item',
+              pswpModule: () => safeImport("https:\/\/npm.webcache.cn\/photoswipe@5.4.4\/dist\/photoswipe.esm.min.js", "sha384-WkkO3GCmgkC3VQWpaV8DqhKJqpzpF9JoByxDmnV8\u002boTJ7m3DfYEWX1fu1scuS4\u002bs")
+            }).init();
+          }
+          if(_$$('.article-gallery a.article-gallery-item').length > 0) {
+            new PhotoSwipeLightbox({
+              gallery: '.article-gallery',
+              children: 'a.article-gallery-item',
+              pswpModule: () => safeImport("https:\/\/npm.webcache.cn\/photoswipe@5.4.4\/dist\/photoswipe.esm.min.js", "sha384-WkkO3GCmgkC3VQWpaV8DqhKJqpzpF9JoByxDmnV8\u002boTJ7m3DfYEWX1fu1scuS4\u002bs")
+            }).init();
+          }
+          window.lightboxStatus = 'done';
+          window.removeEventListener('lightbox:ready', pswp);
+        }
+        if(window.lightboxStatus === 'ready') {
+          pswp()
+        } else {
+          window.addEventListener('lightbox:ready', pswp);
+        }
+      </script>
+      
+
+
+
+
+  
+
+  
+  
+  
+  
+  
+  
+  <script
+    src="https://npm.webcache.cn/valine@1.5.1/dist/Valine.min.js"
+    
+    
+    data-pjax
+    
+    integrity="sha384-3ma91AExDeMAZ1rjTjaP8V2A2obQE&#43;s5ltKRwYlwdpArz9xVbp0tF3b0VV2ACNPn" crossorigin="anonymous"
+  ></script>
+
+
+  <script data-pjax>
+    var GUEST_INFO = ['nick', 'mail', 'link'];
+    var guest_info = 'nick,mail,link'.split(',').filter((item) => {
+      return GUEST_INFO.indexOf(item) > -1
+    });
+    var recordIP = JSON.parse('true');
+    var highlight = JSON.parse('true');
+    var visitor = JSON.parse('false');
+
+    new Valine({
+      el: '.vcomment',
+      appId: "cMu2dMbp0fmen88k6WlaNll8-gzGzoHsz",
+      appKey: "PanRtiZS9OjxYDnRR8qWxha6",
+      placeholder: "Just go go",
+      pageSize: '10',
+      avatar: 'mp',
+      lang: 'zh-cn',
+      recordIP: recordIP,
+      highlight: highlight,
+      visitor: visitor,
+      requiredFields: guest_info,
+      path: window.location.pathname
+    });
+  </script>
+
+
+
+
+
+
+
+
+
+    
+    
+  </div>
+</div>
+
+
+
+
+  
+
+  
+  
+  
+  
+  
+  
+  <script
+    src="https://npm.webcache.cn/busuanzi@2.3.0/bsz.pure.mini.js"
+    
+    async
+    
+    
+    integrity="sha384-0M75wtSkhjIInv4coYlaJU83&#43;OypaRCIq2SukQVQX04eGTCBXJDuWAbJet56id&#43;S" crossorigin="anonymous"
+  ></script>
+
+
+
+
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then((registrations) => {
+        for (let registration of registrations) {
+          registration.unregister();
+        }
+      });
+    }
+  </script>
+
+
+<script>
+  const reimuCopyright = String.raw`
+   ______     ______     __     __    __     __  __    
+  /\  == \   /\  ___\   /\ \   /\ "-./  \   /\ \/\ \   
+  \ \  __<   \ \  __\   \ \ \  \ \ \-./\ \  \ \ \_\ \  
+   \ \_\ \_\  \ \_____\  \ \_\  \ \_\ \ \_\  \ \_____\ 
+    \/_/ /_/   \/_____/   \/_/   \/_/  \/_/   \/_____/ 
+                                                    
+  `;
+  console.log(String.raw`%c ${reimuCopyright}`, "color: #ff5252;");
+  console.log(
+    "%c Theme.Reimu" + " %c https://github.com/D-Sketon/hugo-theme-reimu ",
+    "color: white; background: #ff5252; padding:5px 0;",
+    "padding:4px;border:1px solid #ff5252;",
+  );
+</script>
+
+  </body>
+</html>

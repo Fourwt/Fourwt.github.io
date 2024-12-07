@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hugo on Iotaの小屋</title>
+    <link>https://fourwt.github.io/categories/hugo/</link>
+    <description>Recent content in Hugo on Iotaの小屋</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 06 Dec 2024 11:00:00 -0700</lastBuildDate>
+    <atom:link href="https://fourwt.github.io/categories/hugo/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>hugo小问题（1）</title>
+      <link>https://fourwt.github.io/post/txt/hugo1/</link>
+      <pubDate>Fri, 06 Dec 2024 11:00:00 -0700</pubDate>
+      <guid>https://fourwt.github.io/post/txt/hugo1/</guid>
+      <description>&lt;h1 id=&#34;修复hugo静态生成时渲染html报错&#34;&gt;&#xA;&lt;a class=&#34;header-anchor&#34; href=&#34;#%e4%bf%ae%e5%a4%8dhugo%e9%9d%99%e6%80%81%e7%94%9f%e6%88%90%e6%97%b6%e6%b8%b2%e6%9f%93html%e6%8a%a5%e9%94%99&#34;&gt;&lt;/a&gt;&#xA;修复hugo静态生成时渲染html报错&#xA;&lt;/h1&gt;&lt;p&gt;在我进行静态生成时遇到报错：&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;WARN  Raw HTML omitted while rendering &amp;#34;D:/b/hugo-theme-reimu-0.1.0/dev/content/post/TXT/python杂笔.md&amp;#34;; see https://gohugo.io/getting-started/configuration-markup/#rendererunsafe &#xD;&#xA;You can suppress this warning by adding the following to your site configuration:&#xD;&#xA;ignoreLogs = [&amp;#39;warning-goldmark-raw-html&amp;#39;]&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;查询官方文档，已知是因为渲染的markdown不能理解短代码中的html&lt;/p&gt;&#xA;&lt;p&gt;从Hugo V.0.60开始，默认的markdown渲染器是Gold mark。&lt;/p&gt;&#xA;&lt;p&gt;Goldmark渲染引擎默认忽略了原始HTML。所以你必须使用配置参数来告诉你。&lt;/p&gt;&#xA;&lt;p&gt;这个解决方案可以让Markdown渲染器使用Goldmark渲染器，通过配置考虑原始HTML。&lt;/p&gt;&#xA;&lt;p&gt;修复方法是在配置文件中加入 markup.goldmark.renderer.unsafe: true。&lt;/p&gt;&#xA;&lt;p&gt;于是我在hugo.toml文件中加入这段：&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;[markup]&#xD;&#xA;  [markup.goldmark]&#xD;&#xA;    [markup.goldmark.renderer]&#xD;&#xA;      unsafe = true&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;成功解决。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>hugo小问题（2）</title>
+      <link>https://fourwt.github.io/post/txt/hugo2/</link>
+      <pubDate>Fri, 06 Dec 2024 11:00:00 -0700</pubDate>
+      <guid>https://fourwt.github.io/post/txt/hugo2/</guid>
+      <description>&lt;p&gt;在我创建网站时，第一次接触front-matter,于是便搞不懂怎么分类，现在我将放一些常用front-matter标签：&lt;/p&gt;&#xA;&lt;h2 id=&#34;什么是front-matter&#34;&gt;&#xA;&lt;a class=&#34;header-anchor&#34; href=&#34;#%e4%bb%80%e4%b9%88%e6%98%affront-matter&#34;&gt;&lt;/a&gt;&#xA;&lt;strong&gt;什么是front-matter&lt;/strong&gt;&#xA;&lt;/h2&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;---&#xD;&#xA;title: tags&#xD;&#xA;date: 2019-08-13 09:39:50&#xD;&#xA;type: tags&#xD;&#xA;layout: tag&#xD;&#xA;---&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;就是.md文件最上面的这部分内容&lt;/p&gt;&#xA;&lt;h2 id=&#34;标签详解只讲解官方文档中说的模糊的&#34;&gt;&#xA;&lt;a class=&#34;header-anchor&#34; href=&#34;#%e6%a0%87%e7%ad%be%e8%af%a6%e8%a7%a3%e5%8f%aa%e8%ae%b2%e8%a7%a3%e5%ae%98%e6%96%b9%e6%96%87%e6%a1%a3%e4%b8%ad%e8%af%b4%e7%9a%84%e6%a8%a1%e7%b3%8a%e7%9a%84&#34;&gt;&lt;/a&gt;&#xA;&lt;strong&gt;标签详解（只讲解官方文档中说的模糊的）&lt;/strong&gt;&#xA;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;layout&lt;/strong&gt;：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;作用：指定要使用的模版样式&lt;/li&gt;&#xA;&lt;li&gt;例如我上面的例子中使用的&lt;code&gt;tag&lt;/code&gt;模版&lt;/li&gt;&#xA;&lt;li&gt;如果不指定这个将会使用&lt;code&gt;根目录/_config.yml&lt;/code&gt;中的默认配置&lt;code&gt;default_layout: post&lt;/code&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;&lt;strong&gt;tags&lt;/strong&gt;：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;作用：给文章添加标签，使其能在标签页中显示&lt;/li&gt;&#xA;&lt;li&gt;如何使用：&lt;/li&gt;&#xA;&lt;li&gt;tags:&#xA;- PS3&#xA;- Games&lt;/li&gt;&#xA;&lt;li&gt;如上所示一篇文章可以设置多个标签&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;&lt;strong&gt;categories&lt;/strong&gt;：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;整体内容基本与 &lt;code&gt;tags&lt;/code&gt; 一致&lt;/li&gt;&#xA;&lt;li&gt;区别在于在进行分类管理的时候此标签下的内容是&lt;code&gt;有严格的顺序和层次&lt;/code&gt;的，tags没有&lt;/li&gt;&#xA;&lt;li&gt;categories:&#xA;- Diary&#xA;因为hexo的分类具有层次关系，同一文章不能同时存在两个同级分类中，所以下面这种方式&lt;/li&gt;&#xA;&lt;li&gt;categories:&#xA;- Diary&#xA;- Life&#xA;会使分类Life成为Diary的子分类，而不是并列分类。因此，有必要为您的文章选择尽可能准确的分类。&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+    </item>
+  </channel>
+</rss>

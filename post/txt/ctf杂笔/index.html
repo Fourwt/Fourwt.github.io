@@ -1,0 +1,1819 @@
+<!doctype html>
+<html
+  lang="zh-cn"
+  
+>
+  <head>
+    <meta charset="utf-8" />
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1, shrink-to-fit=no"
+/>
+
+
+
+
+
+
+
+  
+
+<title>
+  CTF题目 | Iota
+</title>
+<meta
+  name="description"
+  content="就当无事发生..."
+/>
+
+
+
+
+
+
+
+
+
+<script>
+  window.siteConfig = JSON.parse("{\"anchor_icon\":null,\"clipboard\":{\"copyright\":{\"content\":\"本文版权：本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！\",\"count\":50,\"enable\":true},\"fail\":\"复制失败 (ﾟ⊿ﾟ)ﾂ\",\"success\":\"复制成功(*^▽^*)\"},\"icon_font\":\"4552607_tq6stt6tcg\",\"outdate\":{\"daysago\":180,\"enable\":false,\"message\":\"本文最后更新于 {time}，请注意文中内容可能已经发生变化。\"}}");
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+    
+  
+
+  
+  
+  
+    
+  
+
+  
+    
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  rel="preload"
+  as="style"
+  href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7cNoto%20Serif%20SC:400,400italic,700,700italic%7c&amp;display=swap"
+/>
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7cNoto%20Serif%20SC:400,400italic,700,700italic%7c&amp;display=swap"
+  media="print"
+  onload="this.media='all'"
+/>
+
+
+
+
+
+
+  <link
+    rel="preload"
+    href="//at.alicdn.com/t/c/font_4552607_tq6stt6tcg.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin="anonymous"
+  />
+
+
+
+  
+
+
+
+
+
+
+
+  
+ <link rel="stylesheet" href="/css/loader.min.2ad0e9bbffb534e893c0ecefc44787a277cf851387e8ad9dccfbc3a5f0886dbe.css" />
+
+
+
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="CTF题目 | Iota" />
+  <meta
+    property="og:description"
+    content="就当无事发生..."
+  />
+  <meta property="og:url" content="https://fourwt.github.io/post/txt/ctf%E6%9D%82%E7%AC%94/" />
+  <meta
+    property="og:site_name"
+    content="Iotaの小屋"
+  />
+  <meta
+    property="og:image"
+    content="https://img.paulzzh.com/touhou/random?5"
+  />
+  <meta property="article:author" content="Iota" />
+  <meta property="article:published_time" content="2023-03-15T11:00:00-07:00" />
+  <meta property="article:modified_time" content="2023-03-15T11:00:00-07:00" />
+  
+    <meta property="article:tag" content="题目" />
+  
+  
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:image" content="https://img.paulzzh.com/touhou/random?5" />
+  
+  
+  
+  
+  
+
+
+
+
+<link rel="shortcut icon" href="/favicon.ico">
+
+
+
+
+
+
+
+
+  
+ <link rel="stylesheet" href="/css/main.min.306f6f41f8bb1e650bf1560e27784a4caa821359cd8332833f8d56821772b93b.css" />
+
+
+
+
+
+  <link
+    rel="preload"
+    as="style"
+    href="https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.css"
+    onload="this.onload=null;this.rel='stylesheet'"
+  />
+
+
+
+
+
+
+  <link
+    rel="preload"
+    as="style"
+    href="https://npm.webcache.cn/katex@0.16.9/dist/katex.min.css"
+    onload="this.onload=null;this.rel='stylesheet'"
+  />
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+  
+  
+  
+  <script
+    src="https://npm.webcache.cn/pace-js@1.2.4/pace.min.js"
+    
+    
+    
+    
+    integrity="sha384-k6YtvFUEIuEFBdrLKJ3YAUbBki333tj1CSUisai5Cswsg9wcLNaPzsTHDswp4Az8" crossorigin="anonymous"
+  ></script>
+
+
+
+
+
+  
+
+
+  <link rel="stylesheet" href="https://npm.webcache.cn/@reimujs/aos@0.1.0/dist/aos.css" />
+
+
+
+
+  </head>
+  <body>
+    
+  <div id='loader'>
+    <div class="loading-left-bg loading-bg"></div>
+    <div class="loading-right-bg loading-bg"></div>
+    <div class="spinner-box">
+      <div class="loading-taichi">
+        
+          <svg width="150" height="150" viewBox="0 0 1024 1024" class="icon" version="1.1" xmlns="https://www.w3.org/2000/svg" shape-rendering="geometricPrecision">
+            <path d="M303.5 432A80 80 0 0 1 291.5 592A80 80 0 0 1 303.5 432z" fill="#ff5252" />
+            <path d="M512 65A447 447 0 0 1 512 959L512 929A417 417 0 0 0 512 95A417 417 0 0 0 512 929L512 959A447 447 0 0 1 512 65z 
+          M512 95A417 417 0 0 1 929 512A208.5 208.5 0 0 1 720.5 720.5L720.5 592A80 80 0 0 0 720.5 432A80 80 0 0 0 720.5 592L720.5 720.5A208.5 208.5 0 0 1 512 512A208.5 208.5 0 0 0 303.5 303.5A208.5 208.5 0 0 0 95 512A417 417 0 0 1 512 95z" fill="#ff5252" />
+          </svg>
+        
+      </div>
+      <div class="loading-word">少女祈祷中...</div>
+    </div>
+  </div>
+  </div>
+  <script>
+    var time = null;
+    var startLoading = () => {
+      time = Date.now();
+      document.getElementById('loader').classList.remove("loading");
+    }
+    var endLoading = () => {
+      if (!time) {
+        document.body.style.overflow = 'auto';
+        document.getElementById('loader').classList.add("loading");
+      } else {
+        if (Date.now() - time > 500) {
+          time = null;
+          document.body.style.overflow = 'auto';
+          document.getElementById('loader').classList.add("loading");
+        } else {
+          setTimeout(endLoading, 500 - (Date.now() - time));
+          time = null;
+        }
+      }
+    }
+    window.addEventListener('DOMContentLoaded', endLoading);
+    document.getElementById('loader').addEventListener('click', endLoading);
+  </script>
+
+
+<div id="copy-tooltip" style="pointer-events: none; opacity: 0; transition: all 0.2s ease; position: fixed;top: 50%;left: 50%;z-index: 999;transform: translate(-50%, -50%);color: white;background: rgba(0, 0, 0, 0.5);padding: 10px 15px;border-radius: 10px;">
+</div>
+
+
+    <div id="container">
+      <div id="wrap">
+        
+<div id="header-nav">
+  <nav id="main-nav">
+    
+      <span class="main-nav-link-wrap">
+        <div class='main-nav-icon icon rotate'>
+          
+            
+              &#xe62b;
+            
+          
+        </div>
+        <a class="main-nav-link" href="/">首页</a>
+      </span>
+    
+      <span class="main-nav-link-wrap">
+        <div class='main-nav-icon icon rotate'>
+          
+            
+              &#xe62b;
+            
+          
+        </div>
+        <a class="main-nav-link" href="/categories">分类</a>
+      </span>
+    
+      <span class="main-nav-link-wrap">
+        <div class='main-nav-icon icon rotate'>
+          
+            
+              &#xe62b;
+            
+          
+        </div>
+        <a class="main-nav-link" href="/archives">归档</a>
+      </span>
+    
+      <span class="main-nav-link-wrap">
+        <div class='main-nav-icon icon rotate'>
+          
+            
+              &#xe62b;
+            
+          
+        </div>
+        <a class="main-nav-link" href="/about">关于</a>
+      </span>
+    
+      <span class="main-nav-link-wrap">
+        <div class='main-nav-icon icon rotate'>
+          
+            
+              &#xe62b;
+            
+          
+        </div>
+        <a class="main-nav-link" href="/friend">友链</a>
+      </span>
+    
+    <a id="main-nav-toggle" class="nav-icon"></a>
+  </nav>
+  <nav id="sub-nav">
+    
+    
+  </nav>
+</div>
+<header id="header">
+  
+    
+      <img fetchpriority="high" src="https://img.paulzzh.com/touhou/random?5" alt="CTF题目">
+    
+  
+
+  <div id="header-outer">
+    <div id="header-title">
+      
+        
+        
+          
+        
+  
+        
+          <a href="/" id="logo">
+            <h1 data-aos="slide-up">CTF题目</h1>
+          </a>
+        
+      
+  
+      
+        
+        
+        <h2 id="subtitle-wrap" data-aos="slide-down">
+          
+        </h2>
+      
+    </div>
+  </div>
+</header>
+        <main id="content">
+          
+          <section id="main">
+  <article
+  class="h-entry article"
+  itemprop="blogPost"
+  itemscope
+  itemtype="https://schema.org/BlogPosting"
+>
+  <div
+    class="article-inner"
+    data-aos="fade-up"
+  >
+    <div class="article-meta">
+      <div class="article-date">
+  <a
+    href="https://fourwt.github.io/post/txt/ctf%E6%9D%82%E7%AC%94/"
+    class="article-date-link"
+    data-aos="zoom-in"
+  >
+    <time datetime="2023-03-15 11:00:00 -0700 -0700" itemprop="datePublished"
+      >2023-03-15</time
+    >
+    <time style="display: none;" id="post-update-time"
+      >2023-03-15</time
+    >
+  </a>
+</div>
+
+      <div class="article-category">
+  
+    <a
+      class="article-category-link"
+      href="/categories/ctf"
+      data-aos="zoom-in"
+      >CTF</a
+    >
+  
+</div>
+
+    </div>
+    <div class="hr-line"></div>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+      
+        <h1 id="were-is-flag">
+<a class="header-anchor" href="#were-is-flag"></a>
+were is flag?
+</h1><h2 id="思路">
+<a class="header-anchor" href="#%e6%80%9d%e8%b7%af"></a>
+[思路]
+</h2><ul>
+<li>查看题目详情，“X老师让小宁同学查看一个网页的源代码，但小宁同学发现鼠标右键好像不管用了。”意思是让我们进入源代码里查看。</li>
+<li>按<kbd>ctrl</kbd>+<kbd>u</kbd>可以进入网页源代码，也可以按<kbd>F12</kbd>进入</li>
+<li>进入后查找flag，发现flag</li>
+</ul>
+<h2 id="总结">
+<a class="header-anchor" href="#%e6%80%bb%e7%bb%93"></a>
+[总结]
+</h2><p>考察网页源代码查看能力</p>
+<h1 id="get_post">
+<a class="header-anchor" href="#get_post"></a>
+get_post
+</h1><h2 id="题目">
+<a class="header-anchor" href="#%e9%a2%98%e7%9b%ae"></a>
+[题目]
+</h2><ul>
+<li>查看题目详情，“X老师告诉小宁同学HTTP通常使用两种请求方法，你知道是哪两种吗？”网上搜索HTTP通常使用的请求方式</li>
+</ul>
+<p>![屏幕截图 2024-06-17 122847](/img/屏幕截图 2024-06-17 122847.png)</p>
+<p>得出是使用GET和POST</p>
+<ul>
+<li></li>
+</ul>
+<p><img alt="image-20240617123708220" src="/img/image-20240617123708220.png"></p>
+<p>网页显示让我们用get方式提交一个值，get的提交格式为：<strong>/?名称=值</strong></p>
+<p><img alt="image-20240617124005661" src="/img/image-20240617124005661.png"></p>
+<p>提交后提示再用POST提交一个变量</p>
+<p><img alt="image-20240617124157424" src="/img/image-20240617124157424.png"></p>
+<p>因为post提交是在body里，所以我们要用到HackBar工具，使用方法如下：</p>
+<p>![屏幕截图 2024-06-17 124349](/img/屏幕截图 2024-06-17 124349.png)</p>
+<p>设置好后点击EXECUTE提交，页面就显示flag了</p>
+<p><img alt="image-20240617124741373" src="/img/image-20240617124741373.png"></p>
+<h2 id="总结-1">
+<a class="header-anchor" href="#%e6%80%bb%e7%bb%93-1"></a>
+[总结]
+</h2><p>考察GET和POST知识，初步掌握HackBar使用</p>
+<h1 id="robots">
+<a class="header-anchor" href="#robots"></a>
+Robots
+</h1><h2 id="题目-1">
+<a class="header-anchor" href="#%e9%a2%98%e7%9b%ae-1"></a>
+[题目]
+</h2><ul>
+<li>查看题目详情，“X老师上课讲了Robots协议，小宁同学却上课打了瞌睡，赶紧来教教小宁Robots协议是什么吧。”</li>
+</ul>
+<p>网上查找robots，<img alt="image-20240617155800174" src="/img/image-20240617155800174.png"></p>
+<p>打开robots文件可以看到：</p>
+<p><img alt="image-20240617160244982" src="/img/image-20240617160244982.png"></p>
+<p>再打开这个php文件：</p>
+<p><img alt="image-20240617160347098" src="/img/image-20240617160347098.png"></p>
+<p>成功找到flag</p>
+<h2 id="总结-2">
+<a class="header-anchor" href="#%e6%80%bb%e7%bb%93-2"></a>
+[总结]
+</h2><p>考察robots协议知识，熟练运用搜索引擎查询相关信息</p>
+<h1 id="backup">
+<a class="header-anchor" href="#backup"></a>
+backup
+</h1><h2 id="题目-2">
+<a class="header-anchor" href="#%e9%a2%98%e7%9b%ae-2"></a>
+[题目]
+</h2><ul>
+<li>查看题目详情，“X老师忘记删除备份文件，他派小宁同学去把备份文件找出来,一起来帮小宁同学吧！”</li>
+</ul>
+<p>打开网站，发现首页提示我们知不知道index.php备份文件<img alt="image-20240617160852136" src="/img/image-20240617160852136.png"></p>
+<p>在网上搜索，得出：</p>
+<p><img alt="image-20240617161108515" src="/img/image-20240617161108515.png"></p>
+<p>打开LInux，利用dirsearch搜索index.php.bak文件</p>
+<p>dirsearch搜索命令：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-properties" data-lang="properties"><span style="display:flex;"><span><span style="color:#a6e22e">dirsearch</span> <span style="color:#e6db74">-u [URL] -e [文件后缀]</span>
+</span></span></code></pre></div><p><img alt="image-20240617162446230" src="/img/image-20240617162446230.png"></p>
+<p>找的文件后，按下<kbd>ctrl</kbd>+<kbd>c</kbd>结束运行。在网页输入/index.php.bak,并打开该文件</p>
+<p><img alt="image-20240617162717689" src="/img/image-20240617162717689.png"></p>
+<p><img alt="image-20240617162845789" src="/img/image-20240617162845789.png"></p>
+<p>找到flag。</p>
+<h2 id="总结-3">
+<a class="header-anchor" href="#%e6%80%bb%e7%bb%93-3"></a>
+[总结]
+</h2><p>熟练运用搜索引擎，dirsearch初试</p>
+<h1 id="cookie">
+<a class="header-anchor" href="#cookie"></a>
+cookie
+</h1><h2 id="题目-3">
+<a class="header-anchor" href="#%e9%a2%98%e7%9b%ae-3"></a>
+[题目]
+</h2><ul>
+<li>查看题目详情：“X老师告诉小宁他在cookie里放了些东西，小宁疑惑地想：‘这是夹心饼干的意思吗？’“，打开网页，询问我们cookie是什么，在网上查找：</li>
+</ul>
+<p><img alt="image-20240617163358795" src="/img/image-20240617163358795.png"></p>
+<p>利用网页查找功能，找到cookie中有个php文件，打开</p>
+<p><img alt="image-20240617163645308" src="/img/image-20240617163645308.png"></p>
+<p><img alt="image-20240617163705149" src="/img/image-20240617163705149.png"></p>
+<p>网页提示我们看看response，网上查找response，得知是响应的意思。打开检查，在网络选项中找到cookie.php，找到响应标头</p>
+<p><img alt="image-20240617164402210" src="/img/image-20240617164402210.png"></p>
+<p>发现flag</p>
+<h2 id="总结-4">
+<a class="header-anchor" href="#%e6%80%bb%e7%bb%93-4"></a>
+[总结]
+</h2><p>掌握cookie知识，熟练使用网页检查</p>
+<h1 id="disabled_button">
+<a class="header-anchor" href="#disabled_button"></a>
+disabled_button
+</h1><h2 id="题目-4">
+<a class="header-anchor" href="#%e9%a2%98%e7%9b%ae-4"></a>
+[题目]
+</h2><ul>
+<li>X老师今天上课讲了前端知识，然后给了大家一个不能按的按钮，小宁惊奇地发现这个按钮按不下去，到底怎么才能按下去呢？</li>
+</ul>
+<p>打开网页检查查看网页源代码</p>
+<p><img alt="image-20240628170411670" src="/img/image-20240628170411670.png"></p>
+<p>发现使用的是html，利用html知识更改input(删除disabled)</p>
+<p><img alt="image-20240628170635810" src="/img/image-20240628170635810.png"></p>
+<p>发现flag</p>
+<h2 id="总结-5">
+<a class="header-anchor" href="#%e6%80%bb%e7%bb%93-5"></a>
+[总结]
+</h2><p>html知识，啥也不是</p>
+<h1 id="simple_js">
+<a class="header-anchor" href="#simple_js"></a>
+simple_js
+</h1><h2 id="题目-5">
+<a class="header-anchor" href="#%e9%a2%98%e7%9b%ae-5"></a>
+[题目]
+</h2><ul>
+<li>小宁发现了一个网页，但却一直输不对密码。(Flag格式为 Cyberpeace{xxxxxxxxx} )</li>
+</ul>
+<p>打开网页，提示输入密码，随便乱输</p>
+<p><img alt="image-20240628171047791" src="/img/image-20240628171047791.png"></p>
+<p><img alt="image-20240628171110332" src="/img/image-20240628171110332.png"></p>
+<p>😊</p>
+<p>利用burp和Proxy SwitchyOmega进行代理</p>
+<p><img alt="image-20240628171812941" src="/img/image-20240628171812941.png"></p>
+<p>发现密码在fromCharCod里，通过判断，密码编码方式为base16，利用python进行转换</p>
+<p><img alt="image-20240628172448302" src="/img/image-20240628172448302.png"></p>
+<p><img alt="image-20240628172541660" src="/img/image-20240628172541660.png"></p>
+<p>得到flag</p>
+<h2 id="总结-6">
+<a class="header-anchor" href="#%e6%80%bb%e7%bb%93-6"></a>
+[总结]
+</h2><p>学会看js，不会就看wp</p>
+<h1 id="xff_referer">
+<a class="header-anchor" href="#xff_referer"></a>
+xff_referer
+</h1><h2 id="题目-6">
+<a class="header-anchor" href="#%e9%a2%98%e7%9b%ae-6"></a>
+[题目]
+</h2><ul>
+<li>X老师告诉小宁其实xff和referer是可以伪造的。</li>
+</ul>
+<p>百度xff和referer：</p>
+<p>X-Forwarded-For:简称XFF头，它代表客户端，也就是HTTP的请求端真实的IP，只有在通过了HTTP 代理或者负载均衡服务器时才会添加该项</p>
+<p>HTTP Referer是header的一部分，当浏览器向web服务器发送请求的时候，一般会带上Referer，告诉服务器我是从哪个页面链接过来的</p>
+<p>利用Hakbar进行伪造xff</p>
+<p><img alt="image-20240628173207027" src="/img/image-20240628173207027.png"></p>
+<p>网页提示必须来自谷歌，利用referer伪造</p>
+<p><img alt="image-20240628173313270" src="/img/image-20240628173313270.png"></p>
+<p>找到flag</p>
+<h2 id="总结-7">
+<a class="header-anchor" href="#%e6%80%bb%e7%bb%93-7"></a>
+[总结]
+</h2><p>有手就行</p>
+<h1 id="weak_auth">
+<a class="header-anchor" href="#weak_auth"></a>
+weak_auth
+</h1><h2 id="题目-7">
+<a class="header-anchor" href="#%e9%a2%98%e7%9b%ae-7"></a>
+[题目]
+</h2><ul>
+<li>小宁写了一个登陆验证页面，随手就设了一个密码。</li>
+</ul>
+<p>打开网页，瞎jb乱填一个账号密码，打开burp</p>
+<p><img alt="image-20240628183434877" src="/img/image-20240628183434877.png"></p>
+<p><img alt="image-20240628184056663" src="/img/image-20240628184056663.png"></p>
+<p>用暴力破解下密码</p>
+<p><img alt="image-20240628192144278" src="/img/image-20240628192144278.png"></p>
+<p>找到，并登录密码</p>
+<p><img alt="image-20240628192226063" src="/img/image-20240628192226063.png"></p>
+<p>找到flag</p>
+<h2 id="总结-8">
+<a class="header-anchor" href="#%e6%80%bb%e7%bb%93-8"></a>
+[总结]
+</h2><p>没啥好说的</p>
+<h1 id="command_execution">
+<a class="header-anchor" href="#command_execution"></a>
+command_execution
+</h1><h2 id="题目-8">
+<a class="header-anchor" href="#%e9%a2%98%e7%9b%ae-8"></a>
+[题目]
+</h2><ul>
+<li>小宁写了个ping功能,但没有写waf,X老师告诉她这是非常危险的，你知道为什么吗。</li>
+</ul>
+<p>百度waf，意思是防火墙，打开网站，ping一下回环地址</p>
+<p><img alt="image-20240628193045162" src="/img/image-20240628193045162.png"></p>
+<p>输出方式有点眼熟，使用命令拼接的方式输入ls</p>
+<blockquote>
+<p>| 的作用为将前一个命令的结果传递给后一个命令作为输入</p>
+<p>&amp;&amp;的作用是前一条命令执行成功时，才执行后一条命令</p>
+</blockquote>
+<p><img alt="image-20240628193253140" src="/img/image-20240628193253140.png"></p>
+<p>可行，用find命令查找flag</p>
+<p><img alt="image-20240628193658501" src="/img/image-20240628193658501.png"></p>
+<p>再用cat命令打开flag</p>
+<p><img alt="image-20240628193812918" src="/img/image-20240628193812918.png"></p>
+<p>找到flag</p>
+<h2 id="总结-9">
+<a class="header-anchor" href="#%e6%80%bb%e7%bb%93-9"></a>
+[总结]
+</h2><p>不会Linux连ping都只能ping百度</p>
+<h1 id="simple_php">
+<a class="header-anchor" href="#simple_php"></a>
+simple_php
+</h1><h2 id="题目-9">
+<a class="header-anchor" href="#%e9%a2%98%e7%9b%ae-9"></a>
+[题目]
+</h2><ul>
+<li>小宁听说php是最好的语言,于是她简单学习之后写了几行php代码。</li>
+</ul>
+<p>打开网页，直接显示php代码，先审计一下</p>
+<p><img alt="image-20240628194141420" src="/img/image-20240628194141420.png"></p>
+<p>根据不多的php知识，当同时满足$a==0和$a时才会显示flag1</p>
+<blockquote>
+<p>php中有两种比较符号</p>
+<p>=== 会同时比较字符串的值和类型</p>
+<p>== 会先将字符串换成相同类型，再作比较，属于弱类型比较</p>
+</blockquote>
+<p>百度php弱比较</p>
+<p><img alt="image-20240628194813832" src="/img/image-20240628194813832.png"></p>
+<p>在地址栏输入?a=abc</p>
+<p><img alt="image-20240628195214610" src="/img/image-20240628195214610.png"></p>
+<p>得到flag1，再看flag2的要求，b要大于1234且不能为数值</p>
+<p>is_numeric() 判断变量是否为数字或数字字符串，不仅检查10进制，16进制
+是可以。
+is_numeric函数对于空字符%00，无论是%00放在前后都可以判断为非数值，
+而%20空格字符只能放在数值后。所以，查看函数发现该函数对对于第一个空
+格字符会跳过空格字符判断，接着后面的判断！
+在这里b不能为数字或数字字符串，但b的值要大于1234，进行绕过，可以使
+用%00进行截断</p>
+<p><img alt="image-20240628195703038" src="/img/image-20240628195703038.png"></p>
+<p>找到flag</p>
+<h2 id="总结-10">
+<a class="header-anchor" href="#%e6%80%bb%e7%bb%93-10"></a>
+[总结]
+</h2><p>不会php和js连网页都看不懂</p>
+<h1 id="作业管理系统">
+<a class="header-anchor" href="#%e4%bd%9c%e4%b8%9a%e7%ae%a1%e7%90%86%e7%b3%bb%e7%bb%9f"></a>
+作业管理系统
+</h1><h2 id="题目-10">
+<a class="header-anchor" href="#%e9%a2%98%e7%9b%ae-10"></a>
+[题目]】
+</h2><ul>
+<li>交作业！！但是哪里不对？</li>
+</ul>
+<p>打开网页，首先检查源代码</p>
+<p><img alt="image-20240801220336463" src="/img/image-20240801220336463.png"></p>
+<p>知道账户密码后，登入</p>
+<h2 id="三种解法">
+<a class="header-anchor" href="#%e4%b8%89%e7%a7%8d%e8%a7%a3%e6%b3%95"></a>
+三种解法：
+</h2><h3 id="解法-1-文件上传">
+<a class="header-anchor" href="#%e8%a7%a3%e6%b3%95-1-%e6%96%87%e4%bb%b6%e4%b8%8a%e4%bc%a0"></a>
+解法 1 文件上传
+</h3><p>到功能页面其实可以直接尝试上传文件，发现是没有任何过滤的，所以直接上传一个一句话木马就好：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-SQL" data-lang="SQL"><span style="display:flex;"><span><span style="color:#f92672">&lt;?</span>php <span style="color:#f92672">@</span>eval(<span style="color:#960050;background-color:#1e0010">$</span>_POST[<span style="color:#ae81ff">1</span>]); <span style="color:#f92672">?&gt;</span>
+</span></span></code></pre></div><p>由于前端页面不显示，上传文件后看不到，但是从上传功能区的 &quot; ./ &quot; 可以得知就是在当前目录</p>
+<p>假设木马名字为 1.php 上传完成后 直接访问 url/1.php 即可，当然你也可以使用 <strong>WebShell管理工具</strong> 进行连接</p>
+<p>比如 <strong>蚁剑</strong> 对于蚁剑的安装配置过程可以参考：https://github.com/ProbiusOfficial/CTF-QuickStart/blob/main/Software_Installation/AntSwordInstallation.md</p>
+<p><img alt="5eaf9181-8a92-4789-a16f-6f1aad0f02bb" src="/img/5eaf9181-8a92-4789-a16f-6f1aad0f02bb.png"></p>
+<p>测试无误后点击添加即可借助一句话木马进行webshell管理：</p>
+<p><img alt="0e0b8d97-6f50-42f0-a21b-8a0f19296ba0" src="/img/0e0b8d97-6f50-42f0-a21b-8a0f19296ba0.png"></p>
+<p>并且在根目录拿到flag</p>
+<p><img alt="61e97db5-f70d-4cb6-a51a-ca1e55ecaf1d" src="/img/61e97db5-f70d-4cb6-a51a-ca1e55ecaf1d.png"></p>
+<h3 id="解法-2-远程下载">
+<a class="header-anchor" href="#%e8%a7%a3%e6%b3%95-2-%e8%bf%9c%e7%a8%8b%e4%b8%8b%e8%bd%bd"></a>
+解法 2 远程下载
+</h3><p>远程下载也有多种解法，当然如果上传有黑名单限制 但是远程下载没有 则可以用远程下载去下载PHP木马文件，然后剩余的步骤和上传木马的操作一样 不多做说明。</p>
+<p>这里最主要是讲基于file协议直接将根目录文件直接下载到当前目录</p>
+<p><img alt="output" src="/img/output.png"></p>
+<p>点击下载就有下面的选项：</p>
+<p><img alt="output" src="/img/output-1722522000855-5.png"></p>
+<p>我们点击编辑文件即可直接拿到flag：</p>
+<p>![output (1)](/img/output (1).png)</p>
+<p>当然这个时候 flag 已经在网页目录了 ，所以我们访问 UR/flag  也可以下载得到flag：</p>
+<p><img alt="bf183141-cb3b-4a65-962f-b2a8d108a456" src="/img/bf183141-cb3b-4a65-962f-b2a8d108a456.png"></p>
+<h3 id="解法-3-直接编辑读取">
+<a class="header-anchor" href="#%e8%a7%a3%e6%b3%95-3-%e7%9b%b4%e6%8e%a5%e7%bc%96%e8%be%91%e8%af%bb%e5%8f%96"></a>
+解法 3 直接编辑读取
+</h3><p>如果你没有想到 file:// 协议，但是你在上传文件的时候 使用了编辑功能，不妨观察它的Url：</p>
+<p><a href="http://node4.anna.nssctf.cn:28090/index.php?op=edit&fename=uploadFileName&folder=./">http://node4.anna.nssctf.cn:28090/index.php?op=edit&fename=uploadFileName&folder=./</a></p>
+<p>由于页面所有的操作只有登录这一个鉴权，所有操作都没用敏感目录的过滤（完全没有过滤），所以这个地方我们直接修改路径为根目录，文件名字为flag <code>?op=edit&amp;fename=flag&amp;folder=/</code></p>
+<p><img alt="3d072d29-bd47-4d05-aaea-aaf5b967dbcb" src="/img/3d072d29-bd47-4d05-aaea-aaf5b967dbcb.png"></p>
+<p>也可以直接读取。</p>
+<p>当然还有其他肯定思路，所以本题目没有预期解，每一个功能点都它的价值。</p>
+<p><strong>No System is Safe.</strong></p>
+<h1 id="swpuctf-2021-新生赛jicao">
+<a class="header-anchor" href="#swpuctf-2021-%e6%96%b0%e7%94%9f%e8%b5%9bjicao"></a>
+[SWPUCTF 2021 新生赛]jicao
+</h1><h2 id="题目-11">
+<a class="header-anchor" href="#%e9%a2%98%e7%9b%ae-11"></a>
+[题目]
+</h2><p><img alt="image-20240919195543074" src="/img/image-20240919195543074.png"></p>
+<ul>
+<li>开始阅览php代码，这里的意思是要用POST的形式提交一个名为id的变量，并赋值为wllmNB，且也要以GET的形式提交一个名为json的参数，且解码为数组。如果id=wllmNB，解码后的json数组中的x的键值对为wllm就可以输出flag的值</li>
+<li>用hackbar就可以提交POST和GET了</li>
+</ul>
+<p><img alt="image-20240919201809956" src="/img/image-20240919201809956.png"></p>
+<p>获得flag</p>
+<h2 id="总结-11">
+<a class="header-anchor" href="#%e6%80%bb%e7%bb%93-11"></a>
+[总结]
+</h2><p>得先学会php</p>
+<h2 id="swpuctf-2021-新生赛caidao">
+<a class="header-anchor" href="#swpuctf-2021-%e6%96%b0%e7%94%9f%e8%b5%9bcaidao"></a>
+[SWPUCTF 2021 新生赛]caidao
+</h2><h3 id="题目-12">
+<a class="header-anchor" href="#%e9%a2%98%e7%9b%ae-12"></a>
+[题目]
+</h3><p><img alt="image-20240921183411675" src="/img/image-20240921183411675.png"></p>
+<p>直接给了张图片，上面t提示我们执行以post请求中获得的wllm变量。</p>
+<ul>
+<li>打开蚁剑，输入url和密码</li>
+</ul>
+<p><img alt="image-20240921184636745" src="/img/image-20240921184636745.png"></p>
+<p>测试连接，成功</p>
+<p>进入，找到根目录的flag文件，获取flag</p>
+<p><img alt="image-20240921184851893" src="/img/image-20240921184851893.png"></p>
+<h3 id="总结-12">
+<a class="header-anchor" href="#%e6%80%bb%e7%bb%93-12"></a>
+[总结]
+</h3><p>初次使用中国蚁剑,还是得学php，因为还可以构造payload，wllm=var_dump(file_get_contents(&quot;/flag&quot;));</p>
+<h2 id="swpuctf-2021-新生赛easy_md5">
+<a class="header-anchor" href="#swpuctf-2021-%e6%96%b0%e7%94%9f%e8%b5%9beasy_md5"></a>
+[SWPUCTF 2021 新生赛]easy_md5
+</h2><h3 id="题目-13">
+<a class="header-anchor" href="#%e9%a2%98%e7%9b%ae-13"></a>
+[题目]
+</h3><p><img alt="image-20240921185835746" src="/img/image-20240921185835746.png"></p>
+<p>查看php代码，发现变量name和password进行md5弱比较相同后输出flag，由hash漏洞可知，俩数md5加密后开头是0e就可以相等。因为php在进行弱类型比较时,会现转换字符串的类型，在进行比较，而在比较是因为两个数都是以0e开头会被认为是科学计数法，0e后面加任何数在科学计数法中都是0，所以两数相等，在进行严格比较（===）时才会先判断字符串类型是否相等</p>
+<pre tabindex="0"><code>#特殊的md5值
+240610708:0e462097431906509019562988736854
+QLTHNDT:0e405967825401955372549139051580
+QNKCDZO:0e830400451993494058024219903391
+PJNPDWY:0e291529052894702774557631701704
+NWWKITQ:0e763082070976038347657360817689
+NOOPCJF:0e818888003657176127862245791911
+MMHUWUV:0e701732711630150438129209816536
+MAUXXQC:0e478478466848439040434801845361
+</code></pre><h4 id="强比较">
+<a class="header-anchor" href="#%e5%bc%ba%e6%af%94%e8%be%83"></a>
+强比较
+</h4><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">md5</span>((<span style="color:#a6e22e">string</span>)$_GET[<span style="color:#e6db74">&#39;a&#39;</span>])<span style="color:#f92672">===</span><span style="color:#a6e22e">md5</span>((<span style="color:#a6e22e">string</span>)$_GET[<span style="color:#e6db74">&#39;b&#39;</span>]))
+</span></span><span style="display:flex;"><span>{<span style="color:#f92672">&lt;!--</span> <span style="color:#f92672">--&gt;</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#a6e22e">var_dump</span>($flag);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>此时两个md5后的值采用严格比较，没有规定字符串如果这个时候传入的是数组不是字符串，可以利用md5()函数的缺陷进行绕过</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#a6e22e">var_dump</span>(<span style="color:#a6e22e">md5</span>([<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>])<span style="color:#f92672">==</span><span style="color:#a6e22e">md5</span>([<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">6</span>]));<span style="color:#75715e">//true
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">var_dump</span>(<span style="color:#a6e22e">md5</span>($_GET[<span style="color:#e6db74">&#39;a&#39;</span>])<span style="color:#f92672">==</span><span style="color:#a6e22e">md5</span>($_GET[<span style="color:#e6db74">&#39;b&#39;</span>]));
+</span></span><span style="display:flex;"><span><span style="color:#f92672">?</span><span style="color:#a6e22e">a</span>[]<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span><span style="color:#f92672">&amp;</span><span style="color:#a6e22e">b</span>[]<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span><span style="color:#75715e">//true
+</span></span></span></code></pre></div><p>md5()函数的描述是string md5(string $str[,bool $raw_output=false])</p>
+<p>md5中需要的是一个string参数，但是当你传入一个array(数组)是，md5()是不会报错的，只是无法求出array的md5的值，这样就会导致任意的2个array的md5的值都会相等</p>
+<p>传参，获取flag</p>
+<p><img alt="image-20240921190746268" src="/img/image-20240921190746268.png"></p>
+<h2 id="第五空间-2021webftp">
+<a class="header-anchor" href="#%e7%ac%ac%e4%ba%94%e7%a9%ba%e9%97%b4-2021webftp"></a>
+[第五空间 2021]WebFTP
+</h2><h3 id="题目-14">
+<a class="header-anchor" href="#%e9%a2%98%e7%9b%ae-14"></a>
+[题目]
+</h3><p><img alt="image-20240921203728893" src="/img/image-20240921203728893.png"></p>
+<ul>
+<li>用backup爆破用户名密码，得到用户名admin，密码admin888。然后就疯狂找啊，最后在phpinfo.php里发现flag（哪个大好人会放这里啊）</li>
+</ul>
+<h3 id="总结-13">
+<a class="header-anchor" href="#%e6%80%bb%e7%bb%93-13"></a>
+[总结]
+</h3><p>太蛋疼了</p>
+<h2 id="litctf-2023flag点击就送">
+<a class="header-anchor" href="#litctf-2023flag%e7%82%b9%e5%87%bb%e5%b0%b1%e9%80%81"></a>
+[LitCTF 2023]Flag点击就送！
+</h2><h2 id="题目-15">
+<a class="header-anchor" href="#%e9%a2%98%e7%9b%ae-15"></a>
+[题目]
+</h2><p><img alt="image-20241022193900288" src="/img/image-20241022193900288.png"></p>
+<p>已知题目类型为cookie伪造，输入正确的用户名(拿字典爆破)，打开检查找到session进行伪造</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> requests
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> string
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> subprocess
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>SECRET_KEY <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;LitCTF&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>cmd_out <span style="color:#f92672">=</span> subprocess<span style="color:#f92672">.</span>check_output([<span style="color:#e6db74">&#39;flask-unsign&#39;</span>, <span style="color:#e6db74">&#39;--sign&#39;</span>, <span style="color:#e6db74">&#39;--cookie&#39;</span>, <span style="color:#e6db74">&#39;{</span><span style="color:#ae81ff">\&#39;</span><span style="color:#e6db74">name</span><span style="color:#ae81ff">\&#39;</span><span style="color:#e6db74">: </span><span style="color:#ae81ff">\&#39;</span><span style="color:#e6db74">admin</span><span style="color:#ae81ff">\&#39;</span><span style="color:#e6db74">}&#39;</span>, <span style="color:#e6db74">&#39;--secret&#39;</span>, SECRET_KEY])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>cookie <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#39;session&#39;</span> : cmd_out<span style="color:#f92672">.</span>decode()<span style="color:#f92672">.</span>rstrip()}
+</span></span><span style="display:flex;"><span>response <span style="color:#f92672">=</span> requests<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;http://node4.anna.nssctf.cn:28821/flag&#39;</span>, cookies<span style="color:#f92672">=</span>cookie)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(response<span style="color:#f92672">.</span>text)
+</span></span></code></pre></div><p>拿脚本直接梭哈，获取flag</p>
+<p><img alt="image-20241022194345624" src="/img/image-20241022194345624.png"></p>
+<h2 id="总结-14">
+<a class="header-anchor" href="#%e6%80%bb%e7%bb%93-14"></a>
+[总结]
+</h2><p>公式做题就是快</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+
+      
+
+      
+        <a
+          data-aos="zoom-in"
+          href="https://fourwt.github.io/post/txt/ctf%E6%9D%82%E7%AC%94/#comments"
+          class="article-comment-link"
+        >
+          <span
+            class="post-comments-count valine-comment-count"
+            data-xid="https//fourwt.github.io/post/txt/ctf%e6%9d%82%e7%ac%94/"
+            itemprop="commentCount"
+          ></span>
+          留言
+        </a>
+      
+
+      
+
+      
+
+      
+
+      
+      <ul class="article-tag-list" itemprop="keywords">
+  
+    <li class="article-tag-list-item" data-aos="zoom-in">
+      <a
+        class="article-tag-list-link"
+        href="/tags/%e9%a2%98%e7%9b%ae"
+        rel="tag"
+        >题目</a
+      >
+    </li>
+  
+</ul>
+
+    </footer>
+  </div>
+  
+    
+  <nav
+    id="article-nav"
+    data-aos="fade-up"
+  >
+    
+      <div class="article-nav-link-wrap article-nav-link-left">
+        
+          <img
+            data-src="https://img.paulzzh.com/touhou/random?7"
+            data-sizes="auto"
+            alt="PHP基础笔记"
+            class="lazyload"
+          />
+        
+        <a href="https://fourwt.github.io/post/txt/php%E6%9D%82%E7%AC%94/"></a>
+        <div class="article-nav-caption">前一篇</div>
+        <h3 class="article-nav-title">
+          
+            PHP基础笔记
+          
+        </h3>
+      </div>
+    
+
+    
+      <div class="article-nav-link-wrap article-nav-link-right">
+        
+          <img
+            data-src="https://img.paulzzh.com/touhou/random?2"
+            data-sizes="auto"
+            alt="C语言基础笔记"
+            class="lazyload"
+          />
+        
+        <a href="https://fourwt.github.io/post/txt/c%E6%9D%82%E7%AC%94/"></a>
+        <div class="article-nav-caption">后一篇</div>
+        <h3 class="article-nav-title">
+          
+            C语言基础笔记
+          
+        </h3>
+      </div>
+    
+  </nav>
+
+
+  
+</article>
+
+  <section
+    id="comments"
+    class="vcomment"
+    data-aos="fade-up"
+  ></section>
+
+
+
+
+
+
+
+
+
+
+</section>
+          
+            <aside id="sidebar">
+  <div class="sidebar-wrapper wrap-sticky">
+    <div
+      class="sidebar-wrap"
+      data-aos="fade-up"
+    >
+      
+        <div class="sidebar-toc-sidebar">
+          <div class="sidebar-toc">
+  <h3 class="toc-title">文章目录</h3>
+  <div class="sidebar-toc-wrapper toc-div-class">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#思路">[思路]</a></li>
+    <li><a href="#总结">[总结]</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#题目">[题目]</a></li>
+    <li><a href="#总结-1">[总结]</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#题目-1">[题目]</a></li>
+    <li><a href="#总结-2">[总结]</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#题目-2">[题目]</a></li>
+    <li><a href="#总结-3">[总结]</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#题目-3">[题目]</a></li>
+    <li><a href="#总结-4">[总结]</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#题目-4">[题目]</a></li>
+    <li><a href="#总结-5">[总结]</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#题目-5">[题目]</a></li>
+    <li><a href="#总结-6">[总结]</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#题目-6">[题目]</a></li>
+    <li><a href="#总结-7">[总结]</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#题目-7">[题目]</a></li>
+    <li><a href="#总结-8">[总结]</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#题目-8">[题目]</a></li>
+    <li><a href="#总结-9">[总结]</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#题目-9">[题目]</a></li>
+    <li><a href="#总结-10">[总结]</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#题目-10">[题目]】</a></li>
+    <li><a href="#三种解法">三种解法：</a>
+      <ul>
+        <li><a href="#解法-1-文件上传">解法 1 文件上传</a></li>
+        <li><a href="#解法-2-远程下载">解法 2 远程下载</a></li>
+        <li><a href="#解法-3-直接编辑读取">解法 3 直接编辑读取</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#题目-11">[题目]</a></li>
+    <li><a href="#总结-11">[总结]</a></li>
+    <li><a href="#swpuctf-2021-新生赛caidao">[SWPUCTF 2021 新生赛]caidao</a>
+      <ul>
+        <li><a href="#题目-12">[题目]</a></li>
+        <li><a href="#总结-12">[总结]</a></li>
+      </ul>
+    </li>
+    <li><a href="#swpuctf-2021-新生赛easy_md5">[SWPUCTF 2021 新生赛]easy_md5</a>
+      <ul>
+        <li><a href="#题目-13">[题目]</a></li>
+      </ul>
+    </li>
+    <li><a href="#第五空间-2021webftp">[第五空间 2021]WebFTP</a>
+      <ul>
+        <li><a href="#题目-14">[题目]</a></li>
+        <li><a href="#总结-13">[总结]</a></li>
+      </ul>
+    </li>
+    <li><a href="#litctf-2023flag点击就送">[LitCTF 2023]Flag点击就送！</a></li>
+    <li><a href="#题目-15">[题目]</a></li>
+    <li><a href="#总结-14">[总结]</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+        </div>
+        <div class="sidebar-common-sidebar hidden">
+          
+<div class="sidebar-author">
+  <img
+    data-src="/avatar/avatar.png"
+    data-sizes="auto"
+    alt="Iota"
+    class="lazyload"
+  />
+  <div class="sidebar-author-name">Iota</div>
+  <div class="sidebar-description">就当无事发生...</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div>
+    <div class="sidebar-state-number">29</div>
+  </div>
+  <div class="sidebar-state-category">
+    <div>分类</div>
+    <div class="sidebar-state-number">
+      8
+    </div>
+  </div>
+  <div class="sidebar-state-tag">
+    <div>标签</div>
+    <div class="sidebar-state-number">4</div>
+  </div>
+</div>
+<div class="sidebar-social">
+  
+</div>
+<div class="sidebar-menu">
+  
+    <div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/"
+        aria-label="首页"
+      ></a>
+      <div class='sidebar-menu-icon icon rotate'>
+        
+          
+            &#xe62b;
+          
+        
+      </div>
+      <div class="sidebar-menu-link">首页</div>
+    </div>
+  
+    <div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/categories"
+        aria-label="分类"
+      ></a>
+      <div class='sidebar-menu-icon icon rotate'>
+        
+          
+            &#xe62b;
+          
+        
+      </div>
+      <div class="sidebar-menu-link">分类</div>
+    </div>
+  
+    <div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/archives"
+        aria-label="归档"
+      ></a>
+      <div class='sidebar-menu-icon icon rotate'>
+        
+          
+            &#xe62b;
+          
+        
+      </div>
+      <div class="sidebar-menu-link">归档</div>
+    </div>
+  
+    <div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/about"
+        aria-label="关于"
+      ></a>
+      <div class='sidebar-menu-icon icon rotate'>
+        
+          
+            &#xe62b;
+          
+        
+      </div>
+      <div class="sidebar-menu-link">关于</div>
+    </div>
+  
+    <div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/friend"
+        aria-label="友链"
+      ></a>
+      <div class='sidebar-menu-icon icon rotate'>
+        
+          
+            &#xe62b;
+          
+        
+      </div>
+      <div class="sidebar-menu-link">友链</div>
+    </div>
+  
+</div>
+
+        </div>
+      
+
+      
+        <div class="sidebar-btn-wrapper" style="position:static">
+          <div class="sidebar-toc-btn current"></div>
+          <div class="sidebar-common-btn"></div>
+        </div>
+      
+    </div>
+  </div>
+
+  
+</aside>
+
+          
+        </main>
+        
+
+
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+
+
+<footer id="footer">
+  <div style="width: 100%; overflow: hidden">
+    <div class="footer-line"></div>
+  </div>
+  <div id="footer-info">
+    <div>
+      <span class="icon-copyright"></span>
+      2020 -
+      2024
+      <span class="footer-info-sep rotate"></span>
+      Iota
+    </div>
+    
+      <div>
+        基于&nbsp;<a
+          href="https://gohugo.io/"
+          target="_blank"
+          >Hugo</a
+        >&nbsp; Theme.<a
+          href="https://github.com/D-Sketon/hugo-theme-reimu"
+          target="_blank"
+          >Reimu</a
+        >
+      </div>
+    
+    
+      <div>
+        <span class="icon-brush"
+          >&nbsp;
+            9.5k
+          </span
+        >
+        &nbsp;|&nbsp;
+        <span class="icon-coffee">&nbsp;
+          
+          
+
+          00:50
+        </span>
+      </div>
+    
+    
+    
+    
+      <div>
+        <span class="icon-eye"></span>
+        <span id="busuanzi_container_site_pv"
+          >总访问量&nbsp;<span
+            id="busuanzi_value_site_pv"
+          ></span
+        ></span>
+        &nbsp;|&nbsp;
+        <span class="icon-user"></span>
+        <span id="busuanzi_container_site_uv"
+          >总访客量&nbsp;<span
+            id="busuanzi_value_site_uv"
+          ></span
+        ></span>
+      </div>
+    
+  </div>
+</footer>
+
+        
+          <div class="sidebar-top">
+            <div class="sidebar-top-taichi rotate"></div>
+            <div class="arrow-up"></div>
+          </div>
+        
+        <div id="mask" class="hide"></div>
+      </div>
+      <nav id="mobile-nav">
+  <div class="sidebar-wrap">
+    
+      <div class="sidebar-toc-sidebar">
+        <div class="sidebar-toc">
+  <h3 class="toc-title">文章目录</h3>
+  <div class="sidebar-toc-wrapper toc-div-class">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#思路">[思路]</a></li>
+    <li><a href="#总结">[总结]</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#题目">[题目]</a></li>
+    <li><a href="#总结-1">[总结]</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#题目-1">[题目]</a></li>
+    <li><a href="#总结-2">[总结]</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#题目-2">[题目]</a></li>
+    <li><a href="#总结-3">[总结]</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#题目-3">[题目]</a></li>
+    <li><a href="#总结-4">[总结]</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#题目-4">[题目]</a></li>
+    <li><a href="#总结-5">[总结]</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#题目-5">[题目]</a></li>
+    <li><a href="#总结-6">[总结]</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#题目-6">[题目]</a></li>
+    <li><a href="#总结-7">[总结]</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#题目-7">[题目]</a></li>
+    <li><a href="#总结-8">[总结]</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#题目-8">[题目]</a></li>
+    <li><a href="#总结-9">[总结]</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#题目-9">[题目]</a></li>
+    <li><a href="#总结-10">[总结]</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#题目-10">[题目]】</a></li>
+    <li><a href="#三种解法">三种解法：</a>
+      <ul>
+        <li><a href="#解法-1-文件上传">解法 1 文件上传</a></li>
+        <li><a href="#解法-2-远程下载">解法 2 远程下载</a></li>
+        <li><a href="#解法-3-直接编辑读取">解法 3 直接编辑读取</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#题目-11">[题目]</a></li>
+    <li><a href="#总结-11">[总结]</a></li>
+    <li><a href="#swpuctf-2021-新生赛caidao">[SWPUCTF 2021 新生赛]caidao</a>
+      <ul>
+        <li><a href="#题目-12">[题目]</a></li>
+        <li><a href="#总结-12">[总结]</a></li>
+      </ul>
+    </li>
+    <li><a href="#swpuctf-2021-新生赛easy_md5">[SWPUCTF 2021 新生赛]easy_md5</a>
+      <ul>
+        <li><a href="#题目-13">[题目]</a></li>
+      </ul>
+    </li>
+    <li><a href="#第五空间-2021webftp">[第五空间 2021]WebFTP</a>
+      <ul>
+        <li><a href="#题目-14">[题目]</a></li>
+        <li><a href="#总结-13">[总结]</a></li>
+      </ul>
+    </li>
+    <li><a href="#litctf-2023flag点击就送">[LitCTF 2023]Flag点击就送！</a></li>
+    <li><a href="#题目-15">[题目]</a></li>
+    <li><a href="#总结-14">[总结]</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+      </div>
+      <div class="sidebar-common-sidebar hidden">
+        
+<div class="sidebar-author">
+  <img
+    data-src="/avatar/avatar.png"
+    data-sizes="auto"
+    alt="Iota"
+    class="lazyload"
+  />
+  <div class="sidebar-author-name">Iota</div>
+  <div class="sidebar-description">就当无事发生...</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div>
+    <div class="sidebar-state-number">29</div>
+  </div>
+  <div class="sidebar-state-category">
+    <div>分类</div>
+    <div class="sidebar-state-number">
+      8
+    </div>
+  </div>
+  <div class="sidebar-state-tag">
+    <div>标签</div>
+    <div class="sidebar-state-number">4</div>
+  </div>
+</div>
+<div class="sidebar-social">
+  
+</div>
+<div class="sidebar-menu">
+  
+    <div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/"
+        aria-label="首页"
+      ></a>
+      <div class='sidebar-menu-icon icon rotate'>
+        
+          
+            &#xe62b;
+          
+        
+      </div>
+      <div class="sidebar-menu-link">首页</div>
+    </div>
+  
+    <div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/categories"
+        aria-label="分类"
+      ></a>
+      <div class='sidebar-menu-icon icon rotate'>
+        
+          
+            &#xe62b;
+          
+        
+      </div>
+      <div class="sidebar-menu-link">分类</div>
+    </div>
+  
+    <div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/archives"
+        aria-label="归档"
+      ></a>
+      <div class='sidebar-menu-icon icon rotate'>
+        
+          
+            &#xe62b;
+          
+        
+      </div>
+      <div class="sidebar-menu-link">归档</div>
+    </div>
+  
+    <div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/about"
+        aria-label="关于"
+      ></a>
+      <div class='sidebar-menu-icon icon rotate'>
+        
+          
+            &#xe62b;
+          
+        
+      </div>
+      <div class="sidebar-menu-link">关于</div>
+    </div>
+  
+    <div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/friend"
+        aria-label="友链"
+      ></a>
+      <div class='sidebar-menu-icon icon rotate'>
+        
+          
+            &#xe62b;
+          
+        
+      </div>
+      <div class="sidebar-menu-link">友链</div>
+    </div>
+  
+</div>
+
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-btn-wrapper">
+      <div class="sidebar-toc-btn current"></div>
+      <div class="sidebar-common-btn"></div>
+    </div>
+  
+</nav>
+
+    </div>
+    
+    
+
+
+
+
+
+
+  
+  
+  
+  
+  
+  
+  <script
+    src="https://npm.webcache.cn/lazysizes@5.3.2/lazysizes.min.js"
+    
+    
+    
+    
+    integrity="sha384-3gT/vsepWkfz/ff7PpWNUeMzeWoH3cDhm/A8jM7ouoAK0/fP/9bcHHR5kHq2nf&#43;e" crossorigin="anonymous"
+  ></script>
+
+
+
+
+  
+  
+  
+  
+  
+  
+  <script
+    src="https://npm.webcache.cn/clipboard@2.0.11/dist/clipboard.min.js"
+    
+    
+    
+    
+    integrity="sha384-J08i8An/QeARD9ExYpvphB8BsyOj3Gh2TSh1aLINKO3L0cMSH2dN3E22zFoXEi0Q" crossorigin="anonymous"
+  ></script>
+
+
+
+
+
+
+
+
+
+  
+      
+      <script src="/js/main.js" integrity="" crossorigin="anonymous" ></script>
+      
+
+
+
+  
+
+
+
+
+
+  
+      
+      <script src="/js/aos.js" integrity="" crossorigin="anonymous" ></script>
+      
+
+  <script>
+    var aosInit = () => {
+      AOS.init({
+        duration: 1000,
+        easing: "ease",
+        once: true,
+        offset: 50,
+      });
+    };
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", aosInit);
+    } else {
+      aosInit();
+    }
+  </script>
+
+
+
+
+
+
+
+
+  
+      
+      <script src="/js/pjax_main.js" integrity="" crossorigin="anonymous" data-pjax></script>
+      
+
+
+
+
+
+  
+
+  
+  
+  
+  
+  
+  
+  <script
+    src="https://npm.webcache.cn/mouse-firework@0.0.6/dist/index.umd.js"
+    
+    
+    
+    
+    integrity="sha384-vkGvf25gm1C1PbcoD5dNfc137HzNL/hr1RKA5HniJOaawtvUmH5lTVFgFAruE9Ge" crossorigin="anonymous"
+  ></script>
+
+
+<script>
+  if (window.firework) {
+    const options = JSON.parse("{\"excludeelements\":[\"a\",\"button\"],\"particles\":[{\"colors\":[\"#ff5252\",\"#ff7c7c\",\"#ffafaf\",\"#ffd0d0\"],\"duration\":[1200,1800],\"easing\":\"easeOutExpo\",\"move\":[\"emit\"],\"number\":20,\"shape\":\"circle\",\"shapeOptions\":{\"alpha\":[0.3,0.5],\"radius\":[16,32]}},{\"colors\":[\"#ff0000\"],\"duration\":[1200,1800],\"easing\":\"easeOutExpo\",\"move\":[\"diffuse\"],\"number\":1,\"shape\":\"circle\",\"shapeOptions\":{\"alpha\":[0.2,0.5],\"lineWidth\":6,\"radius\":20}}]}");
+    options.excludeElements = options.excludeelements;
+    delete options.excludeelements;
+    window.firework(options);
+  }
+</script>
+
+
+
+
+
+<script>
+  function initLive2d() {
+    live2d.init('https:\/\/fastly.jsdelivr.net\/gh\/D-Sketon\/plugin-live2d\/', {themeTipsPath: ""});
+  }
+</script> 
+
+  
+  
+  
+  
+  
+  
+  <script
+    src="https://fastly.jsdelivr.net/gh/D-Sketon/plugin-live2d/js/live2d-autoload.js"
+    
+    async
+    
+    onload="initLive2d()"
+    
+  ></script>
+
+
+
+
+
+
+<div id="lazy-script">
+  <div>
+    
+    
+      
+
+
+
+
+
+  
+      
+      <script src="/js/insert_highlight.js" integrity="" crossorigin="anonymous" data-pjax></script>
+      
+
+      
+      
+      
+      
+      <script type="module" data-pjax>
+        const PhotoSwipeLightbox = (await safeImport("https:\/\/npm.webcache.cn\/photoswipe@5.4.4\/dist\/photoswipe-lightbox.esm.min.js", "sha384-DiL6M\/gG\u002bwmTxmCRZyD1zee6lIhawn5TGvED0FOh7fXcN9B0aZ9dexSF\/N6lrZi\/")).default;
+
+        const pswp = () => {
+          if (_$$('.article-entry a.article-gallery-item').length > 0) {
+            new PhotoSwipeLightbox({
+              gallery: '.article-entry',
+              children: 'a.article-gallery-item',
+              pswpModule: () => safeImport("https:\/\/npm.webcache.cn\/photoswipe@5.4.4\/dist\/photoswipe.esm.min.js", "sha384-WkkO3GCmgkC3VQWpaV8DqhKJqpzpF9JoByxDmnV8\u002boTJ7m3DfYEWX1fu1scuS4\u002bs")
+            }).init();
+          }
+          if(_$$('.article-gallery a.article-gallery-item').length > 0) {
+            new PhotoSwipeLightbox({
+              gallery: '.article-gallery',
+              children: 'a.article-gallery-item',
+              pswpModule: () => safeImport("https:\/\/npm.webcache.cn\/photoswipe@5.4.4\/dist\/photoswipe.esm.min.js", "sha384-WkkO3GCmgkC3VQWpaV8DqhKJqpzpF9JoByxDmnV8\u002boTJ7m3DfYEWX1fu1scuS4\u002bs")
+            }).init();
+          }
+          window.lightboxStatus = 'done';
+          window.removeEventListener('lightbox:ready', pswp);
+        }
+        if(window.lightboxStatus === 'ready') {
+          pswp()
+        } else {
+          window.addEventListener('lightbox:ready', pswp);
+        }
+      </script>
+      
+
+
+
+
+  
+
+  
+  
+  
+  
+  
+  
+  <script
+    src="https://npm.webcache.cn/valine@1.5.1/dist/Valine.min.js"
+    
+    
+    data-pjax
+    
+    integrity="sha384-3ma91AExDeMAZ1rjTjaP8V2A2obQE&#43;s5ltKRwYlwdpArz9xVbp0tF3b0VV2ACNPn" crossorigin="anonymous"
+  ></script>
+
+
+  <script data-pjax>
+    var GUEST_INFO = ['nick', 'mail', 'link'];
+    var guest_info = 'nick,mail,link'.split(',').filter((item) => {
+      return GUEST_INFO.indexOf(item) > -1
+    });
+    var recordIP = JSON.parse('true');
+    var highlight = JSON.parse('true');
+    var visitor = JSON.parse('false');
+
+    new Valine({
+      el: '.vcomment',
+      appId: "cMu2dMbp0fmen88k6WlaNll8-gzGzoHsz",
+      appKey: "PanRtiZS9OjxYDnRR8qWxha6",
+      placeholder: "Just go go",
+      pageSize: '10',
+      avatar: 'mp',
+      lang: 'zh-cn',
+      recordIP: recordIP,
+      highlight: highlight,
+      visitor: visitor,
+      requiredFields: guest_info,
+      path: window.location.pathname
+    });
+  </script>
+
+
+
+
+
+
+
+
+
+    
+    
+  </div>
+</div>
+
+
+
+
+  
+
+  
+  
+  
+  
+  
+  
+  <script
+    src="https://npm.webcache.cn/busuanzi@2.3.0/bsz.pure.mini.js"
+    
+    async
+    
+    
+    integrity="sha384-0M75wtSkhjIInv4coYlaJU83&#43;OypaRCIq2SukQVQX04eGTCBXJDuWAbJet56id&#43;S" crossorigin="anonymous"
+  ></script>
+
+
+
+
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then((registrations) => {
+        for (let registration of registrations) {
+          registration.unregister();
+        }
+      });
+    }
+  </script>
+
+
+<script>
+  const reimuCopyright = String.raw`
+   ______     ______     __     __    __     __  __    
+  /\  == \   /\  ___\   /\ \   /\ "-./  \   /\ \/\ \   
+  \ \  __<   \ \  __\   \ \ \  \ \ \-./\ \  \ \ \_\ \  
+   \ \_\ \_\  \ \_____\  \ \_\  \ \_\ \ \_\  \ \_____\ 
+    \/_/ /_/   \/_____/   \/_/   \/_/  \/_/   \/_____/ 
+                                                    
+  `;
+  console.log(String.raw`%c ${reimuCopyright}`, "color: #ff5252;");
+  console.log(
+    "%c Theme.Reimu" + " %c https://github.com/D-Sketon/hugo-theme-reimu ",
+    "color: white; background: #ff5252; padding:5px 0;",
+    "padding:4px;border:1px solid #ff5252;",
+  );
+</script>
+
+  </body>
+</html>

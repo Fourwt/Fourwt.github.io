@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Android on Iotaの小屋</title>
+    <link>https://fourwt.github.io/categories/android/</link>
+    <description>Recent content in Android on Iotaの小屋</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 16 Mar 2024 11:00:00 -0700</lastBuildDate>
+    <atom:link href="https://fourwt.github.io/categories/android/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>实用小技巧（1）</title>
+      <link>https://fourwt.github.io/post/txt/%E6%9D%82%E9%A1%B91/</link>
+      <pubDate>Sat, 16 Mar 2024 11:00:00 -0700</pubDate>
+      <guid>https://fourwt.github.io/post/txt/%E6%9D%82%E9%A1%B91/</guid>
+      <description>&lt;p&gt;你在愉快的周末折腾自己的爱机时，突然遇到……&#xA;此时的你通常会有两种反应：&#xA;1.“小事，大不了重装”&#xA;2.“小事，大不了重装……诶？我PE盘呢？🌿xN”&lt;/p&gt;&#xA;&lt;p&gt;如果出现第二种反应请往下看（全程无需Root）&lt;/p&gt;&#xA;&lt;p&gt;首先打开以下地址下载今天的主角“EtchDroid”&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://www.coolapk.com/link?url=https%3A%2F%2Fgithub.com%2FEtchDroid%2FEtchDroid%2Freleases&#34;&gt;https://www.coolapk.com/link?url=https%3A%2F%2Fgithub.com%2FEtchDroid%2FEtchDroid%2Freleases&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;Pre-release中v1.9版本使用MaterialYou设计，界面更干净整洁，推荐下载&#xA;其次，你需要一个Type-C转USB头&#xA;点击“写入镜像”，选择提前准备好的PE镜像接着选择u盘 最后“授予权限”权限写入&#xA;注：若找不到PE镜像，可以下载上文中出现的FirPE&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://firpe.cn/WAF/VERIFY/CAPTCHA?info=r0ffeUFGWEsFdsrLNFO%2F40YOIneejGZ7lns4fFv%2BHwktj9YFiM%2FCLjCZnVlHwowT9m0HWTz1%2F6uBZKsI%2BTkkdjI%3D&amp;amp;from=%2F&#34;&gt;https://firpe.cn/WAF/VERIFY/CAPTCHA?info=r0ffeUFGWEsFdsrLNFO%2F40YOIneejGZ7lns4fFv%2BHwktj9YFiM%2FCLjCZnVlHwowT9m0HWTz1%2F6uBZKsI%2BTkkdjI%3D&amp;amp;from=%2F&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
